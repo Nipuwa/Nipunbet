@@ -286,6 +286,18 @@
         <span class="value" id="branch6">Digital Wallet</span>
         <button class="copy-btn" onclick="copyText('branch6')">Copy</button>
       </div>
+      
+      <script>
+function copyTextWithTooltip(id, cardId){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const card = document.getElementById(cardId);
+    card.classList.add('show-tooltip');
+    setTimeout(()=>{ card.classList.remove('show-tooltip'); }, 1000);
+  }).catch(err => console.error('Failed to copy!', err));
+}
+</script>
+
       <!-- Home Button -->
 <div style="text-align:center; margin:20px 0;">
   <a href="index.html" class="home-btn">🏠 Home</a>
