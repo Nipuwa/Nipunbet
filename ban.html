@@ -1,424 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Available Banks - Official Kwan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Available Banks & Payment Methods</title>
   <style>
     body {
-      background: linear-gradient(180deg, #001a33, #002b1f);
-      color: #fff;
-      font-family: "Poppins", sans-serif;
+      font-family: "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0a0a0f, #000);
+      color: white;
+      margin: 0;
+      padding: 20px;
       text-align: center;
-      padding: 30px 15px;
-      min-height: 100vh;
     }
 
     h1 {
-      color: #00ffcc;
-      text-shadow: 0 0 10px #00ff99;
-      margin-bottom: 25px;
       font-size: 26px;
+      margin-bottom: 20px;
     }
 
-    .bank-box {
-      background: rgba(0, 40, 30, 0.7);
-      border: 1px solid #00ff99;
-      border-radius: 15px;
+    .bank-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .bank-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
       padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 15px rgba(0, 255, 150, 0.2);
       text-align: left;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
-      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      transition: 0.3s;
+    }
+
+    .bank-card:hover {
+      transform: translateY(-3px);
+      border-color: #8b5cf6;
+    }
+
+    .bank-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .bank-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .bank-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .bank-details {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .label {
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .value {
+      font-weight: 600;
+      font-size: 15px;
+      word-break: break-word;
     }
 
     .copy-btn {
-      position: absolute;
-      right: 15px;
-      top: 15px;
-      background: linear-gradient(45deg, #00ff99, #0080ff);
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: linear-gradient(90deg, #6d28d9, #9333ea);
+      color: white;
       border: none;
-      color: #fff;
-      border-radius: 10px;
-      padding: 5px 10px;
+      border-radius: 8px;
       cursor: pointer;
-      font-weight: 600;
-      font-size: 14px;
-      transition: 0.3s;
+      transition: 0.2s;
     }
 
     .copy-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px #00ffcc;
-    }
-
-    .back-btn {
-      display: inline-block;
-      margin-top: 25px;
-      background: linear-gradient(45deg, #00bfff, #00ff99);
-      color: #fff;
-      padding: 12px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-      box-shadow: 0 0 10px rgba(0, 255, 150, 0.3);
-    }
-
-    .back-btn:hover {
-      background: linear-gradient(45deg, #00ffcc, #0080ff);
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #00ffcc;
+      opacity: 0.8;
     }
 
     footer {
       margin-top: 40px;
-      font-size: 14px;
-      color: #aee6ff;
-    }
-
-    footer a {
-      color: #00ffcc;
-      text-decoration: none;
-      font-weight: 600;
+      font-size: 13px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <h1>🏦 Available Banks</h1>
+  <h1>Available Banks & Payment Methods</h1>
 
-  <div class="bank-box" id="b1">
-    🔹 LOLC FINANCE PLC<br>
-    Account: 03710008600<br>
-    Name: K W S S MADUSANKA<br>
-    Branch: HEAD OFFICE
-    <button class="copy-btn" onclick="copyText('b1')">Copy</button>
-  </div>
+  <div class="bank-container">
 
-  <div class="bank-box" id="b2">
-    🔹 PEOPLES BANK<br>
-    Account: 066200200076455<br>
-    Name: K W A N MADUSANKA<br>
-    Branch: TRINCOMALEE
-    <button class="copy-btn" onclick="copyText('b2')">Copy</button>
-  </div>
-
-  <div class="bank-box" id="b3">
-    🔹 BOC BANK<br>
-    Account: 95403477<br>
-    Name: K A N MADUSANKA<br>
-    Branch: MORAWAWE
-    <button class="copy-btn" onclick="copyText('b3')">Copy</button>
-  </div>
-
-  <div class="bank-box" id="b4">
-    🔹 COMMERCIAL BANK 🚫
-    <button class="copy-btn" onclick="copyText('b4')">Copy</button>
-  </div>
-
-  <div class="bank-box" id="b5">
-    🔹 SAMPATH BANK<br>
-    Account: 106655172662<br>
-    Name: K W A N MADUSANKA<br>
-    Branch: TRINCOMALEE
-    <button class="copy-btn" onclick="copyText('b5')">Copy</button>
-  </div>
-
-<!-- Dialog Finance PLC - single bank card with copy buttons -->
-<!doctype html>
-<html lang="si">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dialog Finance PLC - Bank Info Card</title>
-  <style>
-    :root{
-      --bg:#0b0b0f;
-      --card:#17151a;
-      --muted:#bfb6c3;
-      --accent:#8b5cf6;
-      --glass: rgba(255,255,255,0.03);
-    }
-    body{
-      margin:0;
-      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(180deg,#060607 0%, #0d0710 60%);
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height:100vh;
-      padding:20px;
-    }
-
-    .bank-card{
-      width:100%;
-      max-width:420px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.1));
-      border-radius:16px;
-      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
-      padding:18px;
-      border: 1px solid rgba(255,255,255,0.04);
-      backdrop-filter: blur(6px);
-    }
-
-    .bank-top{
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
-
-    .bank-logo{
-      width:64px;
-      height:64px;
-      flex:0 0 64px;
-      border-radius:10px;
-      overflow:hidden;
-      background:var(--glass);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border:1px solid rgba(255,255,255,0.03);
-    }
-    .bank-logo img{ width:100%; height:100%; object-fit:contain; display:block; }
-
-    .bank-title{
-      flex:1;
-    }
-    .bank-title h3{
-      margin:0;
-      font-size:18px;
-      letter-spacing:0.2px;
-    }
-    .bank-title p{
-      margin:4px 0 0 0;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .bank-rows{
-      margin-top:14px;
-      display:grid;
-      gap:10px;
-    }
-
-    .row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:12px;
-      border-radius:10px;
-      background: rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.02);
-    }
-
-    .row .left{
-      display:flex;
-      flex-direction:column;
-    }
-    .row .label{
-      font-size:12px;
-      color:var(--muted);
-      margin-bottom:4px;
-    }
-    .row .value{
-      font-weight:600;
-      font-size:15px;
-      word-break:break-all;
-    }
-
-    .copy-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:8px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.04);
-      cursor:pointer;
-      user-select:none;
-      margin-left:12px;
-      color:#fff;
-      font-size:13px;
-    }
-    .copy-btn:active{ transform:translateY(1px); }
-
-    .btn-icon{
-      width:18px; height:18px; display:inline-block;
-      opacity:0.95;
-    }
-
-    .copied-toast{
-      position:fixed;
-      left:50%;
-      bottom:28px;
-      transform:translateX(-50%) translateY(8px);
-      background: rgba(0,0,0,0.7);
-      color:#fff;
-      padding:10px 14px;
-      border-radius:999px;
-      font-size:14px;
-      opacity:0;
-      transition:opacity .22s ease, transform .22s ease;
-      z-index:9999;
-      pointer-events:none;
-    }
-    .copied-toast.show{
-      opacity:1;
-      transform:translateX(-50%) translateY(0);
-    }
-
-    @media (max-width:420px){
-      .bank-card{ padding:14px; border-radius:12px; }
-      .bank-logo{ width:56px; height:56px; flex:0 0 56px;}
-    }
-  </style>
-</head>
-<body>
-  <article class="bank-card" aria-labelledby="bank-name">
-    <div class="bank-top">
-      <figure class="bank-logo" aria-hidden="true">
-        <!-- use the image link you gave -->
-        <img src="https://files.catbox.moe/bezrf4.jpg" alt="Dialog Finance logo or image" onerror="this.style.opacity=.5; this.alt='bank image'">
-      </figure>
-
-      <div class="bank-title">
-        <h3 id="bank-name">Dialog Finance PLC Bank</h3>
-        <p>Master Agent: RAPL Wijesinghe • Head Office</p>
+    <!-- Dialog Finance PLC Bank -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/bezrf4.jpg" alt="Dialog Finance Logo" />
       </div>
+      <div class="bank-title">Dialog Finance PLC Bank</div>
+      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc1">123456789</span></div>
+      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name1">K W A N MADUSANKA</span></div>
+      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch1">TRINCOMALEE</span></div>
+      <button class="copy-btn" onclick="copyBank(1)">Copy</button>
     </div>
 
-    <div class="bank-rows">
-      <!-- Account number row -->
-      <div class="row" data-copy-target="account">
-        <div class="left">
-          <div class="label">ගිණුම් අංකය (Account No.)</div>
-          <div class="value" id="account">0010206000786</div>
-        </div>
-
-        <button class="copy-btn" data-copy="account" aria-label="Copy account number">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M16 1H4a2 2 0 0 0-2 2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="8" y="5" width="13" height="14" rx="2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Copy
-        </button>
+    <!-- Peoples Bank -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/mkfpny.webp" alt="Peoples Bank Logo" />
       </div>
-
-      <!-- Account name row -->
-      <div class="row" data-copy-target="name">
-        <div class="left">
-          <div class="label">නම (Account Name)</div>
-          <div class="value" id="name">RAPL Wijesinghe</div>
-        </div>
-
-        <button class="copy-btn" data-copy="name" aria-label="Copy account name">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M16 1H4a2 2 0 0 0-2 2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="8" y="5" width="13" height="14" rx="2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Copy
-        </button>
-      </div>
-
-      <!-- Branch row -->
-      <div class="row" data-copy-target="branch">
-        <div class="left">
-          <div class="label">ශාඛාව (Branch)</div>
-          <div class="value" id="branch">Head Office</div>
-        </div>
-
-        <button class="copy-btn" data-copy="branch" aria-label="Copy branch">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M16 1H4a2 2 0 0 0-2 2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="8" y="5" width="13" height="14" rx="2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Copy
-        </button>
-      </div>
+      <div class="bank-title">Peoples Bank</div>
+      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc2">123456789</span></div>
+      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name2">K W A N MADUSANKA</span></div>
+      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch2">TRINCOMALEE</span></div>
+      <button class="copy-btn" onclick="copyBank(2)">Copy</button>
     </div>
-  </article>
 
-  <div id="copiedToast" class="copied-toast" role="status" aria-live="polite">Copied!</div>
+    <!-- BOC Bank -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/lv9xca.webp" alt="BOC Bank Logo" />
+      </div>
+      <div class="bank-title">BOC Bank</div>
+      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc3">123456789</span></div>
+      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name3">K W A N MADUSANKA</span></div>
+      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch3">TRINCOMALEE</span></div>
+      <button class="copy-btn" onclick="copyBank(3)">Copy</button>
+    </div>
 
-  <script>
-    // Copy-to-clipboard handler
-    document.addEventListener('click', function(e){
-      const btn = e.target.closest('[data-copy]');
-      if(!btn) return;
-      const key = btn.getAttribute('data-copy');
-      const el = document.getElementById(key);
-      if(!el) return;
+    <!-- Commercial Bank -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/t63dse.jpeg" alt="Commercial Bank Logo" />
+      </div>
+      <div class="bank-title">Commercial Bank</div>
+      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc4">123456789</span></div>
+      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name4">K W A N MADUSANKA</span></div>
+      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch4">TRINCOMALEE</span></div>
+      <button class="copy-btn" onclick="copyBank(4)">Copy</button>
+    </div>
 
-      const text = el.innerText.trim();
-      if(!text) return;
+    <!-- Sampath Bank PLC -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/44gek0.jpeg" alt="Sampath Bank Logo" />
+      </div>
+      <div class="bank-title">Sampath Bank PLC</div>
+      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc5">123456789</span></div>
+      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name5">K W A N MADUSANKA</span></div>
+      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch5">TRINCOMALEE</span></div>
+      <button class="copy-btn" onclick="copyBank(5)">Copy</button>
+    </div>
 
-      // Use navigator.clipboard if available
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(text).then(()=> showToast('Copied!')).catch(()=> fallbackCopy(text));
-      } else {
-        fallbackCopy(text);
-      }
-    });
+    <!-- Lolc Finance PLC -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/0h4eks.jpeg" alt="LOLC Finance Logo" />
+      </div>
+      <div class="bank-title">LOLC Finance PLC</div>
+      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc6">123456789</span></div>
+      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name6">K W A N MADUSANKA</span></div>
+      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch6">TRINCOMALEE</span></div>
+      <button class="copy-btn" onclick="copyBank(6)">Copy</button>
+    </div>
 
-    function fallbackCopy(text){
-      try{
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        showToast('Copied!');
-      } catch(err){
-        showToast('Copy failed');
-      }
-    }
+    <!-- IPay -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/s2qr8q.webp" alt="IPay Logo" />
+      </div>
+      <div class="bank-title">IPay</div>
+      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc7">123456789</span></div>
+      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name7">K W A N MADUSANKA</span></div>
+      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch7">TRINCOMALEE</span></div>
+      <button class="copy-btn" onclick="copyBank(7)">Copy</button>
+    </div>
 
-    let toastTimer = null;
-    function showToast(msg){
-      const t = document.getElementById('copiedToast');
-      t.textContent = msg;
-      t.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(()=> t.classList.remove('show'), 1500);
-    }
+  </div>
 
-    // Optional: allow tapping the whole row to copy its value as well
-    document.querySelectorAll('.row').forEach(r=>{
-      r.addEventListener('click', function(ev){
-        // ignore clicks coming from a button (already handled)
-        if(ev.target.closest('button')) return;
-        const id = r.getAttribute('data-copy-target');
-        const val = document.getElementById(id)?.innerText?.trim();
-        if(val){
-          if(navigator.clipboard && navigator.clipboard.writeText){
-            navigator.clipboard.writeText(val).then(()=> showToast('Copied!')).catch(()=> fallbackCopy(val));
-          } else fallbackCopy(val);
-        }
-      });
-    });
-  </script>
-</body>
-</htm>
-  <a href="index.html" class="back-btn">⬅ Back to Home</a>
-
-  <footer>
-    © 2025 Official Chalah. All Rights Reserved.<br />
-    Developed By <a href="Chalah" target="_blank">Chalah</a>
-  </footer>
+  <footer>⭐ Master Agent KWAN MADUSANKA ⭐</footer>
 
   <script>
-    function copyText(id) {
-      const text = document.getElementById(id).innerText;
+    function copyBank(id) {
+      const acc = document.getElementById("acc" + id).innerText;
+      const name = document.getElementById("name" + id).innerText;
+      const branch = document.getElementById("branch" + id).innerText;
+      const text = `ගිණුම් අංකය: ${acc}\nනම: ${name}\nශාඛාව: ${branch}`;
       navigator.clipboard.writeText(text);
-      alert("✅ Bank details copied successfully!");
+      alert("Copied Bank Details!");
     }
   </script>
 </body>
