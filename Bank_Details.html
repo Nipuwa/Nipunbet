@@ -102,6 +102,21 @@
       font-size: 13px;
       color: #aaa;
     }
+
+    .home-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #6d28d9, #9333ea);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.2s;
+      margin-top: 20px;
+    }
+    .home-btn:hover {
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
@@ -134,30 +149,7 @@
         <button class="copy-btn" onclick="copyText('branch1')">Copy</button>
       </div>
     </div>
-<div class="bank-card">
-      <div class="bank-logo">
-        <img src="https://files.catbox.moe/lv9xca.webp" alt="Bank of Ceylon (BOC)" />
-      </div>
-      <div class="bank-title">Bank of Ceylon (BOC)</div>
 
-      <div class="bank-details">
-        <span class="label">ගිණුම් අංකය:</span>
-        <span class="value" id="acc7">95403477</span>
-        <button class="copy-btn" onclick="copyText('acc4')">Copy</button>
-      </div>
-
-      <div class="bank-details">
-        <span class="label">නම:</span>
-        <span class="value" id="name7">K W A N MADUSANKA</span>
-        <button class="copy-btn" onclick="copyText('name4')">Copy</button>
-      </div>
-
-      <div class="bank-details">
-        <span class="label">ශාඛාව:</span>
-        <span class="value" id="branch7">MORAWEWA</span>
-        <button class="copy-btn" onclick="copyText('branch4')">Copy</button>
-      </div>
-</div>
     <!-- Peoples Bank -->
     <div class="bank-card">
       <div class="bank-logo">
@@ -184,33 +176,7 @@
       </div>
     </div>
 
-    <!-- LOLC Finance PLC -->
-    <div class="bank-card">
-      <div class="bank-logo">
-        <img src="https://files.catbox.moe/0h4eks.jpeg" alt="LOLC Finance Logo" />
-      </div>
-      <div class="bank-title">LOLC Finance PLC</div>
-
-      <div class="bank-details">
-        <span class="label">ගිණුම් අංකය:</span>
-        <span class="value" id="acc3">03710008600</span>
-        <button class="copy-btn" onclick="copyText('acc3')">Copy</button>
-      </div>
-
-      <div class="bank-details">
-        <span class="label">නම:</span>
-        <span class="value" id="name3">K W S S MADUSANKA</span>
-        <button class="copy-btn" onclick="copyText('name3')">Copy</button>
-      </div>
-
-      <div class="bank-details">
-        <span class="label">ශාඛාව:</span>
-        <span class="value" id="branch3">HEAD OFFICE</span>
-        <button class="copy-btn" onclick="copyText('branch3')">Copy</button>
-      </div>
-    </div>
-
-    <!-- Sampath Bank PLC -->
+    <!-- Sampath Bank -->
     <div class="bank-card">
       <div class="bank-logo">
         <img src="https://files.catbox.moe/p75bzk.png" alt="Sampath Bank Logo" />
@@ -233,32 +199,6 @@
         <span class="label">ශාඛාව:</span>
         <span class="value" id="branch4">TRINCOMALEE</span>
         <button class="copy-btn" onclick="copyText('branch4')">Copy</button>
-      </div>
-    </div>
-
-    <!-- Commercial Bank -->
-    <div class="bank-card">
-      <div class="bank-logo">
-        <img src="https://files.catbox.moe/u3j9rv.png" alt="Commercial Bank Logo" />
-      </div>
-      <div class="bank-title">Commercial Bank</div>
-
-      <div class="bank-details">
-        <span class="label">ගිණුම් අංකය:</span>
-        <span class="value" id="acc5">8016816691</span>
-        <button class="copy-btn" onclick="copyText('acc5')">Copy</button>
-      </div>
-
-      <div class="bank-details">
-        <span class="label">නම:</span>
-        <span class="value" id="name5">K W S S MADUSANKA</span>
-        <button class="copy-btn" onclick="copyText('name5')">Copy</button>
-      </div>
-
-      <div class="bank-details">
-        <span class="label">ශාඛාව:</span>
-        <span class="value" id="branch5">ATTIDIYA</span>
-        <button class="copy-btn" onclick="copyText('branch5')">Copy</button>
       </div>
     </div>
 
@@ -286,39 +226,23 @@
         <span class="value" id="branch6">Digital Wallet</span>
         <button class="copy-btn" onclick="copyText('branch6')">Copy</button>
       </div>
-      
-      <script>
-function copyTextWithTooltip(id, cardId){
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    const card = document.getElementById(cardId);
-    card.classList.add('show-tooltip');
-    setTimeout(()=>{ card.classList.remove('show-tooltip'); }, 1000);
-  }).catch(err => console.error('Failed to copy!', err));
-}
-</script>
+    </div>
 
-      <!-- Home Button -->
-<div style="text-align:center; margin:20px 0;">
+  </div>
+
   <a href="index.html" class="home-btn">🏠 Home</a>
-</div>
 
-<style>
-.home-btn {
-  display: inline-block;
-  padding: 8px 16px;
-  background: linear-gradient(90deg, #6d28d9, #9333ea);
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-  transition: 0.2s;
-}
-.home-btn:hover {
-  opacity: 0.8;
-}
-</style>
-
-    </div> 
+  <!-- ✅ Copy Function Script -->
+  <script>
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("✅ කොපි වුණා: " + text);
+      }).catch(err => {
+        alert("❌ කොපි වෙන්න බැරිවුණා");
+        console.error("Clipboard error:", err);
+      });
+    }
+  </script>
 </body>
 </html>
