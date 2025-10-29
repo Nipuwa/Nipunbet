@@ -128,14 +128,285 @@
     <button class="copy-btn" onclick="copyText('b5')">Copy</button>
   </div>
 
-  <div class="bank-box" id="b6">
-    🔹 DIALOG FINANCE PLC<br>
-    Account: 001020414091<br>
-    Name: NIROSH S SANJEEWANI<br>
-    Branch: HEAD OFFICE
-    <button class="copy-btn" onclick="copyText('b6')">Copy</button>
-  </div>
+<!-- Dialog Finance PLC - single bank card with copy buttons -->
+<!doctype html>
+<html lang="si">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dialog Finance PLC - Bank Info Card</title>
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --card:#17151a;
+      --muted:#bfb6c3;
+      --accent:#8b5cf6;
+      --glass: rgba(255,255,255,0.03);
+    }
+    body{
+      margin:0;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg,#060607 0%, #0d0710 60%);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:20px;
+    }
 
+    .bank-card{
+      width:100%;
+      max-width:420px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.1));
+      border-radius:16px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+      padding:18px;
+      border: 1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px);
+    }
+
+    .bank-top{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .bank-logo{
+      width:64px;
+      height:64px;
+      flex:0 0 64px;
+      border-radius:10px;
+      overflow:hidden;
+      background:var(--glass);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .bank-logo img{ width:100%; height:100%; object-fit:contain; display:block; }
+
+    .bank-title{
+      flex:1;
+    }
+    .bank-title h3{
+      margin:0;
+      font-size:18px;
+      letter-spacing:0.2px;
+    }
+    .bank-title p{
+      margin:4px 0 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .bank-rows{
+      margin-top:14px;
+      display:grid;
+      gap:10px;
+    }
+
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px;
+      border-radius:10px;
+      background: rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .row .left{
+      display:flex;
+      flex-direction:column;
+    }
+    .row .label{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:4px;
+    }
+    .row .value{
+      font-weight:600;
+      font-size:15px;
+      word-break:break-all;
+    }
+
+    .copy-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      cursor:pointer;
+      user-select:none;
+      margin-left:12px;
+      color:#fff;
+      font-size:13px;
+    }
+    .copy-btn:active{ transform:translateY(1px); }
+
+    .btn-icon{
+      width:18px; height:18px; display:inline-block;
+      opacity:0.95;
+    }
+
+    .copied-toast{
+      position:fixed;
+      left:50%;
+      bottom:28px;
+      transform:translateX(-50%) translateY(8px);
+      background: rgba(0,0,0,0.7);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:14px;
+      opacity:0;
+      transition:opacity .22s ease, transform .22s ease;
+      z-index:9999;
+      pointer-events:none;
+    }
+    .copied-toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
+
+    @media (max-width:420px){
+      .bank-card{ padding:14px; border-radius:12px; }
+      .bank-logo{ width:56px; height:56px; flex:0 0 56px;}
+    }
+  </style>
+</head>
+<body>
+  <article class="bank-card" aria-labelledby="bank-name">
+    <div class="bank-top">
+      <figure class="bank-logo" aria-hidden="true">
+        <!-- use the image link you gave -->
+        <img src="https://t.me/Hhnnmnmnn/2" alt="Dialog Finance logo or image" onerror="this.style.opacity=.5; this.alt='bank image'">
+      </figure>
+
+      <div class="bank-title">
+        <h3 id="bank-name">Dialog Finance PLC Bank</h3>
+        <p>Master Agent: RAPL Wijesinghe • Head Office</p>
+      </div>
+    </div>
+
+    <div class="bank-rows">
+      <!-- Account number row -->
+      <div class="row" data-copy-target="account">
+        <div class="left">
+          <div class="label">ගිණුම් අංකය (Account No.)</div>
+          <div class="value" id="account">0010206000786</div>
+        </div>
+
+        <button class="copy-btn" data-copy="account" aria-label="Copy account number">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16 1H4a2 2 0 0 0-2 2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="8" y="5" width="13" height="14" rx="2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Copy
+        </button>
+      </div>
+
+      <!-- Account name row -->
+      <div class="row" data-copy-target="name">
+        <div class="left">
+          <div class="label">නම (Account Name)</div>
+          <div class="value" id="name">RAPL Wijesinghe</div>
+        </div>
+
+        <button class="copy-btn" data-copy="name" aria-label="Copy account name">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16 1H4a2 2 0 0 0-2 2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="8" y="5" width="13" height="14" rx="2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Copy
+        </button>
+      </div>
+
+      <!-- Branch row -->
+      <div class="row" data-copy-target="branch">
+        <div class="left">
+          <div class="label">ශාඛාව (Branch)</div>
+          <div class="value" id="branch">Head Office</div>
+        </div>
+
+        <button class="copy-btn" data-copy="branch" aria-label="Copy branch">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16 1H4a2 2 0 0 0-2 2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="8" y="5" width="13" height="14" rx="2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Copy
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <div id="copiedToast" class="copied-toast" role="status" aria-live="polite">Copied!</div>
+
+  <script>
+    // Copy-to-clipboard handler
+    document.addEventListener('click', function(e){
+      const btn = e.target.closest('[data-copy]');
+      if(!btn) return;
+      const key = btn.getAttribute('data-copy');
+      const el = document.getElementById(key);
+      if(!el) return;
+
+      const text = el.innerText.trim();
+      if(!text) return;
+
+      // Use navigator.clipboard if available
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(()=> showToast('Copied!')).catch(()=> fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    });
+
+    function fallbackCopy(text){
+      try{
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('Copied!');
+      } catch(err){
+        showToast('Copy failed');
+      }
+    }
+
+    let toastTimer = null;
+    function showToast(msg){
+      const t = document.getElementById('copiedToast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=> t.classList.remove('show'), 1500);
+    }
+
+    // Optional: allow tapping the whole row to copy its value as well
+    document.querySelectorAll('.row').forEach(r=>{
+      r.addEventListener('click', function(ev){
+        // ignore clicks coming from a button (already handled)
+        if(ev.target.closest('button')) return;
+        const id = r.getAttribute('data-copy-target');
+        const val = document.getElementById(id)?.innerText?.trim();
+        if(val){
+          if(navigator.clipboard && navigator.clipboard.writeText){
+            navigator.clipboard.writeText(val).then(()=> showToast('Copied!')).catch(()=> fallbackCopy(val));
+          } else fallbackCopy(val);
+        }
+      });
+    });
+  </script>
+</body>
+</htm>
   <a href="index.html" class="back-btn">⬅ Back to Home</a>
 
   <footer>
