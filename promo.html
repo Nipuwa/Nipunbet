@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promo Codes - Official Kwan</title>
+  <style>
+    body {
+      background: linear-gradient(180deg, #001a33, #002b1f);
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .promo-box {
+      background: rgba(0, 40, 30, 0.7);
+      border: 2px solid #00ff99;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 150, 0.3);
+      width: 300px;
+      text-align: center;
+      position: relative;
+    }
+
+    .promo-code {
+      font-size: 22px;
+      color: #00ffcc;
+      font-weight: 700;
+      margin-top: 10px;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    .copy-btn {
+      margin-top: 15px;
+      background: linear-gradient(45deg, #00bfff, #00ff99);
+      border: none;
+      color: #fff;
+      border-radius: 15px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .copy-btn:hover {
+      background: linear-gradient(45deg, #00ffcc, #0080ff);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffcc;
+    }
+
+    .back-btn {
+      margin-top: 25px;
+      background: linear-gradient(45deg, #00bfff, #00ff99);
+      padding: 12px 28px;
+      border-radius: 30px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(45deg, #00ffcc, #0080ff);
+    }
+  </style>
+</head>
+<body>
+  <div class="promo-box">
+    🎁 <b>PROMO CODE</b>
+    <div class="promo-code" id="promo">NIPUN18</div>
+    <button class="copy-btn" onclick="copyPromo()">Copy Code</button>
+  </div>
+
+  <a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+  <script>
+    function copyPromo() {
+      navigator.clipboard.writeText("NIPUN18");
+      alert("✅ Promo Code Copied!");
+    }
+  </script>
+</body>
+</html>
