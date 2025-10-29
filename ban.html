@@ -66,6 +66,9 @@
     .bank-details {
       margin-bottom: 8px;
       font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .label {
@@ -80,13 +83,13 @@
     }
 
     .copy-btn {
-      margin-top: 10px;
-      padding: 6px 12px;
+      padding: 4px 8px;
       background: linear-gradient(90deg, #6d28d9, #9333ea);
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 13px;
       transition: 0.2s;
     }
 
@@ -112,10 +115,24 @@
         <img src="https://files.catbox.moe/bezrf4.jpg" alt="Dialog Finance Logo" />
       </div>
       <div class="bank-title">Dialog Finance PLC Bank</div>
-      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc1">123456789</span></div>
-      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name1">K W A N MADUSANKA</span></div>
-      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch1">TRINCOMALEE</span></div>
-      <button class="copy-btn" onclick="copyBank(1)">Copy</button>
+      
+      <div class="bank-details">
+        <span class="label">ගිණුම් අංකය:</span>
+        <span class="value" id="acc1">123456789</span>
+        <button class="copy-btn" onclick="copyText('acc1')">Copy</button>
+      </div>
+
+      <div class="bank-details">
+        <span class="label">නම:</span>
+        <span class="value" id="name1">K W A N MADUSANKA</span>
+        <button class="copy-btn" onclick="copyText('name1')">Copy</button>
+      </div>
+
+      <div class="bank-details">
+        <span class="label">ශාඛාව:</span>
+        <span class="value" id="branch1">TRINCOMALEE</span>
+        <button class="copy-btn" onclick="copyText('branch1')">Copy</button>
+      </div>
     </div>
 
     <!-- Peoples Bank -->
@@ -124,98 +141,34 @@
         <img src="https://files.catbox.moe/mkfpny.webp" alt="Peoples Bank Logo" />
       </div>
       <div class="bank-title">Peoples Bank</div>
-      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc2">123456789</span></div>
-      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name2">K W A N MADUSANKA</span></div>
-      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch2">TRINCOMALEE</span></div>
-      <button class="copy-btn" onclick="copyBank(2)">Copy</button>
-    </div>
 
-    <!-- BOC Bank -->
-<div class="bank-card">
-  <div class="bank-logo">
-    <img src="https://files.catbox.moe/0h4eks.jpeg" alt="LOLC Finance Logo" />
-  </div>
-  <div class="bank-title">LOLC Finance PLC</div>
-
-  <div class="bank-details">
-    <span class="label">ගිණුම් අංකය:</span> 
-    <span class="value" id="acc6">123456789</span>
-    <button onclick="copyText('acc6')">Copy</button>
-  </div>
-
-  <div class="bank-details">
-    <span class="label">නම:</span> 
-    <span class="value" id="name6">K W A N MADUSANKA</span>
-    <button onclick="copyText('name6')">Copy</button>
-  </div>
-
-  <div class="bank-details">
-    <span class="label">ශාඛාව:</span> 
-    <span class="value" id="branch6">TRINCOMALEE</span>
-    <button onclick="copyText('branch6')">Copy</button>
-  </div>
-</div>
-
-    <!-- Commercial Bank -->
-    <div class="bank-card">
-      <div class="bank-logo">
-        <img src="https://files.catbox.moe/t63dse.jpeg" alt="Commercial Bank Logo" />
+      <div class="bank-details">
+        <span class="label">ගිණුම් අංකය:</span>
+        <span class="value" id="acc2">987654321</span>
+        <button class="copy-btn" onclick="copyText('acc2')">Copy</button>
       </div>
-      <div class="bank-title">Commercial Bank</div>
-      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc4">123456789</span></div>
-      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name4">K W A N MADUSANKA</span></div>
-      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch4">TRINCOMALEE</span></div>
-      <button class="copy-btn" onclick="copyBank(4)">Copy</button>
-    </div>
 
-    <!-- Sampath Bank PLC -->
-    <div class="bank-card">
-      <div class="bank-logo">
-        <img src="https://files.catbox.moe/44gek0.jpeg" alt="Sampath Bank Logo" />
+      <div class="bank-details">
+        <span class="label">නම:</span>
+        <span class="value" id="name2">K W A N MADUSANKA</span>
+        <button class="copy-btn" onclick="copyText('name2')">Copy</button>
       </div>
-      <div class="bank-title">Sampath Bank PLC</div>
-      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc5">123456789</span></div>
-      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name5">K W A N MADUSANKA</span></div>
-      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch5">TRINCOMALEE</span></div>
-      <button class="copy-btn" onclick="copyBank(5)">Copy</button>
-    </div>
 
-    <!-- Lolc Finance PLC -->
-    <div class="bank-card">
-      <div class="bank-logo">
-        <img src="https://files.catbox.moe/0h4eks.jpeg" alt="LOLC Finance Logo" />
+      <div class="bank-details">
+        <span class="label">ශාඛාව:</span>
+        <span class="value" id="branch2">TRINCOMALEE</span>
+        <button class="copy-btn" onclick="copyText('branch2')">Copy</button>
       </div>
-      <div class="bank-title">LOLC Finance PLC</div>
-      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc6">123456789</span></div>
-      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name6">K W A N MADUSANKA</span></div>
-      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch6">TRINCOMALEE</span></div>
-      <button class="copy-btn" onclick="copyBank(6)">Copy</button>
-    </div>
-
-    <!-- IPay -->
-    <div class="bank-card">
-      <div class="bank-logo">
-        <img src="https://files.catbox.moe/s2qr8q.webp" alt="IPay Logo" />
-      </div>
-      <div class="bank-title">IPay</div>
-      <div class="bank-details"><span class="label">ගිණුම් අංකය:</span> <span class="value" id="acc7">123456789</span></div>
-      <div class="bank-details"><span class="label">නම:</span> <span class="value" id="name7">K W A N MADUSANKA</span></div>
-      <div class="bank-details"><span class="label">ශාඛාව:</span> <span class="value" id="branch7">TRINCOMALEE</span></div>
-      <button class="copy-btn" onclick="copyBank(7)">Copy</button>
     </div>
 
   </div>
-
-  <footer>⭐ Master Agent KWAN MADUSANKA ⭐</footer>
 
   <script>
-    function copyBank(id) {
-      const acc = document.getElementById("acc" + id).innerText;
-      const name = document.getElementById("name" + id).innerText;
-      const branch = document.getElementById("branch" + id).innerText;
-      const text = `ගිණුම් අංකය: ${acc}\nනම: ${name}\nශාඛාව: ${branch}`;
-      navigator.clipboard.writeText(text);
-      alert("Copied Bank Details!");
+    function copyText(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text)
+        .then(() => alert('Copied: ' + text))
+        .catch(err => console.error('Failed to copy!', err));
     }
   </script>
 </body>
