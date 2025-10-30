@@ -100,7 +100,6 @@
     transform: scale(1.05);
   }
 
-  /* Modal full preview */
   #imgModal {
     display: none;
     position: fixed;
@@ -138,6 +137,12 @@
 </head>
 <body>
 
+<header>
+  <div class="logo">NipunBet 💰</div>
+  <!-- Home button to index.html -->
+  <a href="index.html" class="home-btn">🏠 Home</a>
+</header>
+
 <h2>Proofs Center</h2>
 
 <div class="btn-group">
@@ -145,7 +150,6 @@
   <button id="withdrawBtn">Withdrawal Proofs</button>
 </div>
 
-<!-- Deposit Proof Section -->
 <div id="depositSection" class="proof-section active-section">
   <h3>Deposit Proofs</h3>
   <div class="gallery">
@@ -153,7 +157,6 @@
   </div>
 </div>
 
-<!-- Withdrawal Proof Section -->
 <div id="withdrawSection" class="proof-section">
   <h3>Withdrawal Proofs</h3>
   <div class="gallery">
@@ -161,7 +164,6 @@
   </div>
 </div>
 
-<!-- Image Modal -->
 <div id="imgModal">
   <span id="closeModal">&times;</span>
   <img id="modalImage" src="">
@@ -175,7 +177,6 @@
   const depositSection = document.getElementById('depositSection');
   const withdrawSection = document.getElementById('withdrawSection');
 
-  // Toggle between deposit / withdrawal
   depositBtn.addEventListener('click', () => {
     depositSection.classList.add('active-section');
     withdrawSection.classList.remove('active-section');
@@ -190,7 +191,6 @@
     depositBtn.classList.remove('active');
   });
 
-  // Modal preview
   const modal = document.getElementById('imgModal');
   const modalImg = document.getElementById('modalImage');
   const closeModal = document.getElementById('closeModal');
@@ -207,6 +207,6 @@
     if (e.target === modal) modal.style.display = 'none';
   };
 </script>
-  <a href="index.html" class="home-btn">🏠 Home</a>
+
 </body>
 </html>
