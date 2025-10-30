@@ -7,37 +7,50 @@
 <style>
   body {
     font-family: 'Poppins', sans-serif;
-    background-color: #0d1117;
+    background: linear-gradient(180deg, #0d1117 0%, #121a22 40%, #101010 100%);
     color: #e8e8e8;
     text-align: center;
     padding: 40px 10px;
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out, background 1.2s ease;
   }
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
+  body.loaded {
+    opacity: 1;
   }
 
-  .logo {
-    font-size: 20px;
-    color: #00ff88;
-    font-weight: bold;
+  /* Fade overlay for entry animation */
+  #fadeOverlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #0d1117, #000);
+    opacity: 1;
+    z-index: 999;
+    transition: opacity 1.2s ease-in-out;
+  }
+
+  #fadeOverlay.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .home-btn {
     background-color: #00ff88;
     color: #000;
-    padding: 8px 18px;
+    padding: 10px 22px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-bottom: 25px;
   }
 
   .home-btn:hover {
     background-color: #00cc6a;
+    transform: scale(1.05);
   }
 
   h2 {
@@ -50,6 +63,7 @@
     justify-content: center;
     gap: 15px;
     margin-bottom: 25px;
+    flex-wrap: wrap;
   }
 
   button {
@@ -136,7 +150,10 @@
 </style>
 </head>
 <body>
- <a href="index.html" class="home-btn">🏠 Home</a>
+
+<div id="fadeOverlay"></div>
+
+<a href="#" class="home-btn" id="homeBtn">🏠 Home</a>
 
 <h2>Proofs Center</h2>
 
@@ -167,6 +184,14 @@
 <footer>© 2025 NipunBet — All Rights Reserved</footer>
 
 <script>
+  // Fade overlay animation
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+    const overlay = document.getElementById('fadeOverlay');
+    setTimeout(() => overlay.classList.add("hidden"), 600);
+  });
+
+  // Tabs logic
   const depositBtn = document.getElementById('depositBtn');
   const withdrawBtn = document.getElementById('withdrawBtn');
   const depositSection = document.getElementById('depositSection');
@@ -186,6 +211,7 @@
     depositBtn.classList.remove('active');
   });
 
+  // Image modal
   const modal = document.getElementById('imgModal');
   const modalImg = document.getElementById('modalImage');
   const closeModal = document.getElementById('closeModal');
@@ -201,6 +227,17 @@
   modal.onclick = (e) => {
     if (e.target === modal) modal.style.display = 'none';
   };
+
+  // Smooth fade-out then navigate home
+  const homeBtn = document.getElementById('homeBtn');
+  homeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const overlay = document.getElementById('fadeOverlay');
+    overlay.classList.remove("hidden");
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 800);
+  });
 </script>
 
 </body>
