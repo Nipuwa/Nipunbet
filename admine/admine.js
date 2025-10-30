@@ -5,7 +5,7 @@ import { collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic
 const logoutBtn = document.getElementById("logoutBtn");
 logoutBtn.addEventListener("click", async () => {
   await signOut(auth);
-  window.location.href = "index.html";
+  window.location.href = "index2.html";
 });
 
 const addSignalBtn = document.getElementById("addSignalBtn");
