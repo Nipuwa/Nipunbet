@@ -1,263 +1,203 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KWAN MADUSANKA - Cash Agent Services</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KWAN MADUSANKA - Cash Agent Services</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
 
-    body {
-      background: #00162b;
-      color: white;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow-x: hidden;
-      padding-bottom: 40px;
-    }
+  body {
+    background: #00162b;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
 
-    /* HEADER */
-    .header {
-      width: 100%;
-      padding: 50px 20px 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  /* COVER HEADER */
+  .cover {
+    width: 100%;
+    height: 250px;
+    background: url('https://files.catbox.moe/n2xkvo.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
 
-    /* Profile pic with animated green border */
-    .profile-wrapper {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-    }
+  /* PROFILE WRAPPER */
+  .profile-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    margin-top: -75px; /* overlap cover */
+  }
 
-    .profile-wrapper::before {
-      content: "";
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 4px solid #00ff00;
-      animation: rotateBorder 3s linear infinite;
-    }
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
 
-    @keyframes rotateBorder {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+  h1 {
+    font-size: 28px;
+    margin-top: 10px;
+    color: #aee6ff;
+    text-align: center;
+  }
 
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
+  h3 {
+    font-weight: 400;
+    margin-top: 5px;
+    color: #66d9ff;
+    text-align: center;
+  }
 
-    h1 {
-      font-size: 28px;
-      margin-top: 10px;
-      color: #aee6ff;
-    }
+  /* BUTTONS */
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0 40px;
+    width: 90%;
+    max-width: 500px;
+  }
 
-    h3 {
-      font-weight: 400;
-      margin-top: 5px;
-      color: #66d9ff;
-    }
+  .buttons a {
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(135deg, #007fff, #00d4ff);
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    min-width: 140px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
 
-    /* BUTTON LINKS */
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin: 25px 0 40px;
-      width: 90%;
-      max-width: 500px;
-    }
+  .buttons a:hover {
+    background: linear-gradient(135deg, #00bfff, #00ffcc);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  }
 
-    .buttons a {
-      position: relative;
-      text-decoration: none;
-      color: white;
-      background: linear-gradient(135deg, #007fff, #00d4ff);
-      padding: 12px 20px;
-      border-radius: 25px;
-      font-weight: 600;
-      min-width: 140px;
-      text-align: center;
-      transition: all 0.3s ease;
-      overflow: hidden;
-      display: inline-block;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
+  /* ABOUT */
+  .about {
+    max-width: 700px;
+    background: rgba(0,255,0,0.05);
+    border-radius: 20px;
+    padding: 25px 30px;
+    margin: 20px auto;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0,255,0,0.2);
+    backdrop-filter: blur(5px);
+    position: relative;
+  }
 
-    .buttons a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s ease, height 0.3s ease;
-    }
+  .about h2 {
+    color: #00ff00;
+    margin-bottom: 15px;
+    font-size: 24px;
+    text-align: center;
+  }
 
-    .buttons a:hover::after,
-    .buttons a:active::after {
-      width: 200%;
-      height: 500%;
-    }
+  .about p, .about ul li {
+    color: #d6f0ff;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
 
-    .buttons a:hover {
-      background: linear-gradient(135deg, #00bfff, #00ffcc);
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-    }
+  .about ul {
+    list-style: disc inside;
+    padding-left: 15px;
+  }
 
-    /* ABOUT SECTION CENTERED BOX */
-    .about {
-      max-width: 700px;
-      background: rgba(0,255,0,0.05);
-      border: 2px solid #00ff00;
-      border-radius: 20px;
-      padding: 25px 30px;
-      margin: 20px auto;
-      text-align: left;
-      box-shadow: 0 8px 20px rgba(0,255,0,0.2);
-      backdrop-filter: blur(5px);
-      position: relative;
-    }
+  /* LIST BUTTONS */
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 25px auto 40px;
+    width: 90%;
+    max-width: 450px;
+  }
 
-    .about h2 {
-      color: #00ff00;
-      margin-bottom: 15px;
-      font-size: 24px;
-      text-align: center;
-    }
+  .list button {
+    background: linear-gradient(135deg, #007bff, #00d4ff);
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
 
-    .about p, .about ul li {
-      color: #d6f0ff;
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
+  .list button:hover {
+    background: linear-gradient(135deg, #00bfff, #00ffcc);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  }
 
-    .about ul {
-      list-style: disc inside;
-      padding-left: 15px;
-    }
+  footer {
+    margin-top: auto;
+    padding: 15px 10px;
+    font-size: 14px;
+    color: #aee6ff;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 30, 0.6);
+  }
 
-    /* LIST BUTTONS */
-    .list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin: 25px auto 40px;
-      width: 90%;
-      max-width: 450px;
-    }
+  footer a {
+    color: #00bfff;
+    text-decoration: none;
+    font-weight: 600;
+  }
 
-    .list button {
-      background: linear-gradient(135deg, #007bff, #00d4ff);
-      color: #fff;
-      border: none;
-      padding: 14px 20px;
-      border-radius: 15px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
+  footer a:hover {
+    text-decoration: underline;
+  }
 
-    .list button::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s ease, height 0.3s ease;
-    }
+  @media (max-width: 768px) {
+    h1 { font-size: 24px; }
+    h3 { font-size: 14px; }
+    .buttons a { font-size: 15px; padding: 12px; min-width: 120px; }
+    .list button { font-size: 15px; padding: 12px; }
+  }
 
-    .list button:hover::after,
-    .list button:active::after {
-      width: 200%;
-      height: 500%;
-    }
-
-    .list button:hover {
-      background: linear-gradient(135deg, #00bfff, #00ffcc);
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: auto;
-      padding: 15px 10px;
-      font-size: 14px;
-      color: #aee6ff;
-      width: 100%;
-      text-align: center;
-      background: rgba(0, 0, 30, 0.6);
-      border-top: 1px solid #00ff00;
-    }
-
-    footer a {
-      color: #00bfff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      h1 { font-size: 24px; }
-      h3 { font-size: 14px; }
-      .buttons a { font-size: 15px; padding: 12px; min-width: 120px; }
-      .list button { font-size: 15px; padding: 12px; }
-    }
-
-    @media (min-width: 1024px) {
-      .buttons a { font-size: 16px; padding: 14px 28px; }
-      .list button { font-size: 16px; padding: 14px; }
-    }
-  </style>
+  @media (min-width: 1024px) {
+    .buttons a { font-size: 16px; padding: 14px 28px; }
+    .list button { font-size: 16px; padding: 14px; }
+  }
+</style>
 </head>
 <body>
-  <div class="header">
-    <div class="profile-wrapper">
-      <img src="https://files.catbox.moe/n2xkvo.jpg" alt="Profile" class="profile-pic" />
-    </div>
-    <h1>KWAN MADUSANKA</h1>
-    <h3>Master Agent | 1XBet | Melbet</h3>
+  <div class="cover"></div>
+
+  <div class="profile-wrapper">
+    <img src="https://files.catbox.moe/n2xkvo.jpg" alt="Profile" class="profile-pic" />
   </div>
+
+  <h1>KWAN MADUSANKA</h1>
+  <h3>Master Agent | 1XBet | Melbet</h3>
 
   <div class="buttons">
     <a href="https://wa.me/94726116388" target="_blank">💬 WhatsApp 1</a>
