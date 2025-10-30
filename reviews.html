@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💬 User Reviews</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0a0a0f, #000);
+      color: white;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #a855f7;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .review-form {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: 20px auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    input, textarea, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+    }
+
+    input, textarea, select {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    button {
+      background: linear-gradient(90deg, #6d28d9, #9333ea);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .review-list {
+      max-width: 800px;
+      margin: 30px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .review {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: left;
+      position: relative;
+    }
+
+    .review small {
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    .stars {
+      color: gold;
+      margin-bottom: 5px;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      padding: 3px 8px;
+      cursor: pointer;
+      font-size: 12px;
+      display: none;
+    }
+
+    .review.own .delete-btn {
+      display: block;
+    }
+
+    a.home-btn {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      background: linear-gradient(90deg, #6d28d9, #9333ea);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>💬 ඔබගේ අදහස් දාන්න</h1>
+
+  <div class="review-form">
+    <input type="text" id="username" placeholder="ඔබේ නම" required />
+    <select id="rating">
+      <option value="5">⭐⭐⭐⭐⭐ (Excellent)</option>
+      <option value="4">⭐⭐⭐⭐ (Good)</option>
+      <option value="3">⭐⭐⭐ (Average)</option>
+      <option value="2">⭐⭐ (Poor)</option>
+      <option value="1">⭐ (Very Bad)</option>
+    </select>
+    <textarea id="comment" rows="4" placeholder="ඔබේ අදහස ලියන්න..." required></textarea>
+    <button onclick="addReview()">Post Feedback</button>
+  </div>
+
+  <div class="review-list" id="reviewList"></div>
+
+  <a href="index.html" class="home-btn">🏠 Back to Home</a>
+
+  <script>
+    const reviewList = document.getElementById('reviewList');
+    const localId = localStorage.getItem('userID') || generateUserID();
+    localStorage.setItem('userID', localId);
+
+    function generateUserID() {
+      return 'user-' + Math.random().toString(36).substr(2, 9);
+    }
+
+    function loadReviews() {
+      reviewList.innerHTML = '';
+      const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+      reviews.forEach((r, i) => {
+        const div = document.createElement('div');
+        div.className = 'review' + (r.userId === localId ? ' own' : '');
+        div.innerHTML = `
+          <div class="stars">${'⭐'.repeat(r.rating)}</div>
+          <p>${r.comment}</p>
+          <small>👤 ${r.name} | 📅 ${r.date}</small>
+          <button class="delete-btn" onclick="deleteReview(${i})">🗑 Delete</button>
+        `;
+        reviewList.appendChild(div);
+      });
+    }
+
+    function addReview() {
+      const name = document.getElementById('username').value.trim();
+      const rating = parseInt(document.getElementById('rating').value);
+      const comment = document.getElementById('comment').value.trim();
+
+      if (!name || !comment) {
+        alert('කරුණාකර නම සහ අදහස යොදන්න!');
+        return;
+      }
+
+      const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+      const newReview = {
+        userId: localId,
+        name,
+        rating,
+        comment,
+        date: new Date().toLocaleString()
+      };
+
+      reviews.push(newReview);
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+
+      document.getElementById('username').value = '';
+      document.getElementById('comment').value = '';
+      loadReviews();
+    }
+
+    function deleteReview(index) {
+      const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+      if (reviews[index].userId !== localId) {
+        alert("ඔබට මේ අදහස මකා දැමිය නොහැක!");
+        return;
+      }
+      if (confirm('ඔබට මේ අදහස ඉවත් කරන්න අවශ්‍යද?')) {
+        reviews.splice(index, 1);
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+        loadReviews();
+      }
+    }
+
+    loadReviews();
+  </script>
+</body>
+</html>
