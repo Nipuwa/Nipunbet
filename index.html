@@ -219,7 +219,43 @@
     <p>✅ Free Deposit ✅ Free Signal ✅ Free BET Slip<br>
        ✅ Special Friday & Sunday Promo Offers</p>
   </div>
+<!-- 🌍 Live Visitors Section (Add this above </body>) -->
+<section style="text-align:center; margin:50px 0 20px 0; font-family:Poppins, sans-serif;">
+  <h2 id="liveTitle" 
+      style="color:#00ff88; font-size:28px; font-weight:600; text-shadow:0 0 10px #00ff88; margin-bottom:8px;">
+    👁 Live Visitors
+  </h2>
 
+  <p style="color:#bfbfbf; margin-bottom:18px;">
+    Real-time visitors from around the world 🌍
+  </p>
+
+  <!-- 🏳️ Flag Counter -->
+  <a href="https://flagcounter.me/details/glG" target="_blank" title="View Live Stats">
+    <img src="https://flagcounter.me/glG/" alt="Flag Counter" 
+         style="border:0; max-width:100%; height:auto; box-shadow:0 0 20px rgba(0,255,136,0.2); border-radius:10px;">
+  </a>
+
+  <p style="font-size:13px; color:#555; margin-top:12px;">
+    Powered by 
+    <a href="https://flagcounter.me" target="_blank" 
+       style="color:#00ff88; text-decoration:none;">FlagCounter.me</a>
+  </p>
+</section>
+
+<script>
+  // 👁 Title Glow Animation Effect
+  const title = document.getElementById("liveTitle");
+  let glow = true;
+  setInterval(() => {
+    if (glow) {
+      title.style.textShadow = "0 0 20px #00ff88, 0 0 30px #00ff88";
+    } else {
+      title.style.textShadow = "0 0 8px #00ff88";
+    }
+    glow = !glow;
+  }, 1000);
+</script>
   <div class="list">
     <button onclick="window.location.href='Bank_Details.html'">🏦 Available Banks</button>
     <button onclick="window.location.href='https://whatsapp.com/channel/0029Vb6hl5tH5JLyIRqdUB0f'">💸 Withdraw Details</button>
