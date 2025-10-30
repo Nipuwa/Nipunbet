@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - KWAN MADUSANKA</title>
+<style>
+  body{
+    margin:0;
+    font-family:"Poppins", sans-serif;
+    background:linear-gradient(-45deg, #00162b, #002f5a, #003b7a, #001a3a);
+    background-size:400% 400%;
+    animation: gradientShift 12s ease infinite;
+    color:#d6f0ff;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
+  }
+  @keyframes gradientShift{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  h1{color:#00bfff; margin-bottom:20px; text-shadow:0 0 10px #00bfff;}
+  .stats, .comments-section{background:rgba(255,255,255,0.05); padding:20px; border-radius:20px; width:100%; max-width:600px; margin-bottom:30px; backdrop-filter:blur(10px);}
+  .stats p{font-size:18px;}
+  #commentsList div{padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.1);}
+  button{padding:10px 20px; border:none; border-radius:10px; cursor:pointer; font-weight:600; margin-top:10px;}
+  #deleteCommentsBtn{background:#ff4d4d; color:white;}
+  #logoutBtn{background:#00bfff; color:white; margin-top:20px;}
+</style>
+</head>
+<body>
+
+<h1>Admin Panel</h1>
+
+<div class="stats">
+  <p>Total Visitors: <span id="visitorCount">0</span></p>
+</div>
+
+<div class="comments-section">
+  <h2>Comments</h2>
+  <div id="commentsList"></div>
+  <button id="deleteCommentsBtn">Delete All Comments</button>
+</div>
+
+<button id="logoutBtn">Logout</button>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { increment, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCWA0IS7AmqyIw41iyu_Zf5Y2U9p_G7PHs",
+    authDomain: "nipunbet-3d6be.firebaseapp.com",
+    projectId: "nipunbet-3d6be",
+    storageBucket: "nipunbet-3d6be.appspot.com",
+    messagingSenderId: "175096159607",
+    appId: "1:175096159607:web:daa57703840233e492d572",
+    measurementId: "G-R40HMC5VKK"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // --- Visitor Count ---
+  const visitorCountEl = document.getElementById("visitorCount");
+  const visitorsDoc = doc(db,"siteStats","visitors");
+
+  async function loadVisitorCount(){
+    const docSnap = await getDoc(visitorsDoc);
+    if(docSnap.exists()){
+      visitorCountEl.textContent = docSnap.data().count || 0;
+    } else {
+      visitorCountEl.textContent = 0;
+    }
+  }
+  loadVisitorCount();
+
+  // --- Load Comments ---
+  const commentsListEl = document.getElementById("commentsList");
+  async function loadComments(){
+    commentsListEl.innerHTML="";
+    const querySnapshot = await getDocs(collection(db,"comments"));
+    querySnapshot.forEach(docSnap=>{
+      const div = document.createElement("div");
+      div.textContent = docSnap.data().text;
+      commentsListEl.appendChild(div);
+    });
+  }
+  loadComments();
+
+  // --- Delete Comments ---
+  const deleteBtn = document.getElementById("deleteCommentsBtn");
+  deleteBtn.addEventListener("click", async ()=>{
+    const pass = prompt("Enter password to delete comments:");
+    if(pass==="1234"){
+      const querySnapshot = await getDocs(collection(db,"comments"));
+      for(const docSnap of querySnapshot.docs){
+        await deleteDoc(doc(db,"comments",docSnap.id));
+      }
+      loadComments();
+      alert("All comments deleted!");
+    } else {
+      alert("Wrong password!");
+    }
+  });
+
+  // --- Logout ---
+  const logoutBtn = document.getElementById("logoutBtn");
+  logoutBtn.addEventListener("click", ()=>{
+    window.location.href="main.html"; // redirect to main site
+  });
+</script>
+
+</body>
+</html>
