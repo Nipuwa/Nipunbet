@@ -1,251 +1,296 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KWAN MADUSANKA - Cash Agent Services</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KWAN MADUSANKA - Cash Agent Services</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
 
-    /* Animated Blue Gradient Background */
-    body {
-      color: white;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow-x: hidden;
-      position: relative;
-    }
+body {
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(-45deg, #00162b, #002f5a, #003b7a, #001a3a);
-      background-size: 400% 400%;
-      animation: gradientShift 12s ease infinite;
-      z-index: -1;
-    }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(-45deg, #00162b, #002f5a, #003b7a, #001a3a);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  z-index: -1;
+}
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+@keyframes gradientShift { 
+  0% { background-position: 0% 50%; } 
+  50% { background-position: 100% 50%; } 
+  100% { background-position:0% 50%; }
+}
 
-    /* HEADER */
-    .header {
-      width: 100%;
-      padding: 60px 20px 100px;
-      background: rgba(0, 10, 30, 0.6);
-      border-bottom: 3px solid #00aaff;
-      box-shadow: 0 0 40px rgba(0, 170, 255, 0.4);
-      backdrop-filter: blur(10px);
-    }
+.header {
+  width:100%; padding:40px 20px 60px;
+  background: rgba(0,10,30,0.6);
+  border-bottom: 3px solid #00aaff;
+  box-shadow:0 0 40px rgba(0,170,255,0.4);
+  backdrop-filter: blur(10px);
+}
 
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid #00bfff;
-      background-color: #fff;
-      object-fit: cover;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 25px rgba(0, 170, 255, 0.5);
-    }
+.profile-pic {
+  width:120px; height:120px;
+  border-radius:50%;
+  border:3px solid #00bfff;
+  background-color:#fff;
+  object-fit:cover;
+  transition:all 0.3s ease;
+  box-shadow:0 0 25px rgba(0,170,255,0.5);
+}
 
-    .profile-pic:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 35px #00bfff;
-    }
+.profile-pic:hover {
+  transform:scale(1.08);
+  box-shadow:0 0 35px #00bfff;
+}
 
-    h1 {
-      font-size: 32px;
-      margin-top: 20px;
-      color: #aee6ff;
-      text-shadow: 0 0 10px #00bfff;
-    }
+h1 { font-size:28px; margin-top:15px; color:#aee6ff; text-shadow:0 0 10px #00bfff; }
+h3 { font-weight:400; margin-top:5px; color:#66d9ff; text-shadow:0 0 8px #0099ff; }
 
-    h3 {
-      font-weight: 400;
-      margin-top: 8px;
-      color: #66d9ff;
-      text-shadow: 0 0 8px #0099ff;
-    }
+.buttons { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin:-50px 0 30px; }
+.buttons a {
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(90deg,#007fff,#00bfff);
+  padding:14px 26px;
+  border-radius:40px;
+  font-weight:600;
+  transition:0.3s ease;
+  box-shadow:0 0 20px rgba(0,170,255,0.3);
+}
+.buttons a:hover {
+  background:linear-gradient(90deg,#00bfff,#007fff);
+  transform:scale(1.1);
+  box-shadow:0 0 30px #00bfff;
+}
 
-    /* BUTTON LINKS */
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: -60px 0 40px;
-    }
+.about {
+  max-width:700px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(0,170,255,0.2);
+  border-radius:20px;
+  padding:20px;
+  margin:20px auto;
+  box-shadow:0 0 25px rgba(0,170,255,0.2);
+  backdrop-filter: blur(10px);
+}
 
-    .buttons a {
-      text-decoration: none;
-      color: white;
-      background: linear-gradient(90deg, #007fff, #00bfff);
-      padding: 14px 26px;
-      border-radius: 40px;
-      font-weight: 600;
-      transition: 0.3s ease;
-      box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
-    }
+.about h2 { color:#00bfff; margin-bottom:10px; font-size:22px; text-shadow:0 0 8px #00bfff; }
+.about p { margin-bottom:10px; line-height:1.6; color:#d6f0ff; }
+.about ul { list-style:none; padding:0; margin:10px 0; text-align:left; display:inline-block; }
+.about ul li { margin:5px 0; color:#bde9ff; }
 
-    .buttons a:hover {
-      background: linear-gradient(90deg, #00bfff, #007fff);
-      transform: scale(1.1);
-      box-shadow: 0 0 30px #00bfff;
-    }
+.list { display:flex; flex-direction:column; gap:15px; margin:20px auto 30px; width:90%; max-width:360px; }
+.list button {
+  background:linear-gradient(90deg,#007bff,#00bfff);
+  color:#fff; border:none; padding:16px; border-radius:15px;
+  cursor:pointer; font-weight:700; font-size:17px; transition:all 0.3s ease;
+  box-shadow:0 0 20px rgba(0,170,255,0.3);
+}
+.list button:hover { transform:scale(1.07); box-shadow:0 0 30px #00bfff; background:linear-gradient(90deg,#00bfff,#007fff); }
 
-    /* ABOUT SECTION */
-    .about {
-      max-width: 700px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 170, 255, 0.2);
-      border-radius: 20px;
-      padding: 25px;
-      margin: 20px auto;
-      box-shadow: 0 0 25px rgba(0, 170, 255, 0.2);
-      backdrop-filter: blur(10px);
-    }
+footer {
+  margin-top:auto; padding:20px 10px; font-size:14px; color:#aee6ff; width:100%;
+  background: rgba(0,0,30,0.6); border-top:2px solid #00bfff; text-align:center;
+  backdrop-filter:blur(8px);
+}
+footer a { color:#00bfff; text-decoration:none; font-weight:600; }
+footer a:hover { text-decoration:underline; }
 
-    .about h2 {
-      color: #00bfff;
-      margin-bottom: 10px;
-      font-size: 22px;
-      text-shadow: 0 0 8px #00bfff;
-    }
+/* Comment Section */
+.comment-section {
+  max-width:600px;
+  margin:30px auto;
+  background: rgba(0,0,0,0.3);
+  padding:20px;
+  border-radius:15px;
+  backdrop-filter:blur(10px);
+  text-align:center;
+}
+.comment-section h2 { color:#00bfff; margin-bottom:15px; }
+.comment-list { display:flex; flex-direction:column; align-items:center; gap:10px; }
+.comment-item {
+  width:80%;
+  background: rgba(0,0,0,0.5);
+  border-radius:10px;
+  padding:8px 10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  position: relative;
+}
+.comment-item span {
+  color:#d6f0ff;
+  text-align:center;
+  flex:1;
+}
+.comment-item button {
+  position: absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  color:#ff4d4d;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:16px;
+}
 
-    .about p {
-      margin-bottom: 10px;
-      line-height: 1.6;
-      color: #d6f0ff;
-    }
+#commentInput { width:70%; padding:10px; border-radius:10px; border:none; outline:none; margin-top:10px; }
+#addCommentBtn { padding:10px 20px;border-radius:10px;background:#00bfff;color:white;border:none;cursor:pointer;margin-left:10px; }
+#deleteAllBtn { padding:10px 20px;border-radius:10px;background:#ff4d4d;color:white;border:none;cursor:pointer;margin-top:10px; }
 
-    .about ul {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0;
-      text-align: left;
-      display: inline-block;
-    }
-
-    .about ul li {
-      margin: 5px 0;
-      color: #bde9ff;
-    }
-
-    /* BUTTON LIST SECTION */
-    .list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin: 30px auto 40px;
-      width: 90%;
-      max-width: 360px;
-    }
-
-    .list button {
-      background: linear-gradient(90deg, #007bff, #00bfff);
-      color: #fff;
-      border: none;
-      padding: 16px;
-      border-radius: 15px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 17px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
-    }
-
-    .list button:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 30px #00bfff;
-      background: linear-gradient(90deg, #00bfff, #007fff);
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: auto;
-      padding: 20px 10px;
-      font-size: 14px;
-      color: #aee6ff;
-      width: 100%;
-      background: rgba(0, 0, 30, 0.6);
-      border-top: 2px solid #00bfff;
-      text-align: center;
-      backdrop-filter: blur(8px);
-    }
-
-    footer a {
-      color: #00bfff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 26px; }
-      h3 { font-size: 15px; }
-      .buttons a { width: 80%; text-align: center; }
-    }
-  </style>
+@media(max-width:600px){
+  h1{font-size:24px;}
+  h3{font-size:14px;}
+  .buttons a{width:80%; text-align:center;}
+  .comment-item{width:95%;}
+}
+</style>
 </head>
 <body>
-  <div class="header">
-    <img src="https://files.catbox.moe/n2xkvo.jpg" alt="Profile" class="profile-pic" />
-    <h1>KWAN MADUSANKA</h1>
-    <h3>Master Agent | 1XBet | Melbet</h3>
-  </div>
 
-  <div class="buttons">
-    <a href="https://wa.me/94726116388" target="_blank">💬 WhatsApp 1 </a>
-    <a href="tel:+94726116388">📞 Call</a>
-    <a href="https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt" target="_blank">👥 WhatsApp Group</a>
-    <a href="https://whatsapp.com/channel/0029Vb6hl5tH5JLyIRqdUB0f" target="_blank">📢 Proof</a>
-    <a href="https://www.facebook.com/share/1CSedskYWX/" target="_blank">📘 Facebook</a>
-  </div>
+<!-- HEADER -->
+<div class="header">
+  <img src="https://files.catbox.moe/n2xkvo.jpg" alt="Profile" class="profile-pic" />
+  <h1>KWAN MADUSANKA</h1>
+  <h3>Master Agent | 1XBet | Melbet</h3>
+</div>
 
-  <div class="about">
-    <h2>About</h2>
-    <p>💠 විශ්වාසනීය සේවාවක් සමඟින් ඔබගේ මුදල් ආරක්ෂිතව — 100% Genuine Cash Agent සේවාවක්.</p>
-    <p>🏅 1Xbet 🏅 888 🏅 Melbet 🏅 DB Bet<br>⭐ Fast & Trusted Transactions ⭐</p>
+<!-- BUTTONS -->
+<div class="buttons">
+  <a href="https://wa.me/94726116388" target="_blank">💬 WhatsApp 1</a>
+  <a href="tel:+94726116388">📞 Call</a>
+  <a href="https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt" target="_blank">👥 WhatsApp Group</a>
+  <a href="https://whatsapp.com/channel/0029Vb6hl5tH5JLyIRqdUB0f" target="_blank">📢 Proof</a>
+  <a href="https://www.facebook.com/share/1CSedskYWX/" target="_blank">📘 Facebook</a>
+</div>
 
-    <ul>
-      <li>✔ Deposit from Rs.100/=</li>
-      <li>✔ Withdrawal from Rs.250/= — No Hidden Fees</li>
-      <li>✔ 24/7 Fast Customer Support</li>
-    </ul>
+<!-- ABOUT -->
+<div class="about">
+  <h2>About</h2>
+  <p>💠 විශ්වාසනීය සේවාවක් සමඟින් ඔබගේ මුදල් ආරක්ෂිතව — 100% Genuine Cash Agent සේවාවක්.</p>
+  <p>🏅 1Xbet 🏅 888 🏅 Melbet 🏅 DB Bet<br>⭐ Fast & Trusted Transactions ⭐</p>
+  <ul>
+    <li>✔ Deposit from Rs.100/=</li>
+    <li>✔ Withdrawal from Rs.250/= — No Hidden Fees</li>
+    <li>✔ 24/7 Fast Customer Support</li>
+  </ul>
+  <p>✅ Free Deposit ✅ Free Signal ✅ Free BET Slip<br>
+     ✅ Special Friday & Sunday Promo Offers</p>
+</div>
 
-    <p>✅ Free Deposit ✅ Free Signal ✅ Free BET Slip<br>
-       ✅ Special Friday & Sunday Promo Offers</p>
-  </div>
+<!-- LIST BUTTONS -->
+<div class="list">
+  <button onclick="window.location.href='Bank_Details.html'">🏦 Available Banks</button>
+  <button onclick="window.location.href='https://whatsapp.com/channel/0029Vb6hl5tH5JLyIRqdUB0f'">💸 Withdraw Details</button>
+  <button onclick="window.location.href='https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt'">📶 Free Signal</button>
+  <button onclick="window.location.href='promo.html'">🎁 Promo Codes & Links</button>
+  <button id="adminLoginBtn">🛠 Admin Login</button>
+</div>
 
-  <div class="list">
-    <button onclick="window.location.href='Bank_Details.html'">🏦 Available Banks</button>
-    <button onclick="window.location.href='https://whatsapp.com/channel/0029Vb6hl5tH5JLyIRqdUB0f'">💸 Withdraw Details</button>
-    <button onclick="window.location.href='https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt'">📶 Free Signal</button>
-    <button onclick="window.location.href='promo.html'">🎁 Promo Codes & Links</button>
-  </div>
+<!-- COMMENT SECTION -->
+<div class="comment-section">
+  <h2>Comments</h2>
+  <div class="comment-list" id="commentsList"></div>
+  <input type="text" id="commentInput" placeholder="Type your comment...">
+  <button id="addCommentBtn">Add Comment</button>
+  <button id="deleteAllBtn">Delete All Comments</button>
+</div>
 
-  <footer>
-    © 2025 Official KWAN MADUSANKA. All Rights Reserved.<br>
-    Developed by <a href="#">Nipun</a>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  © 2025 Official KWAN MADUSANKA. All Rights Reserved.<br>
+  Developed by <a href="#">Nipun</a>
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCWA0IS7AmqyIw41iyu_Zf5Y2U9p_G7PHs",
+  authDomain: "nipunbet-3d6be.firebaseapp.com",
+  projectId: "nipunbet-3d6be",
+  storageBucket: "nipunbet-3d6be.appspot.com",
+  messagingSenderId: "175096159607",
+  appId: "1:175096159607:web:daa57703840233e492d572",
+  measurementId: "G-R40HMC5VKK"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const input = document.getElementById("commentInput");
+const addBtn = document.getElementById("addCommentBtn");
+const deleteAllBtn = document.getElementById("deleteAllBtn");
+const commentsList = document.getElementById("commentsList");
+
+async function loadComments(){
+  commentsList.innerHTML = "";
+  const snapshot = await getDocs(collection(db,"comments"));
+  snapshot.forEach(docSnap=>{
+    const div = document.createElement("div");
+    div.className = "comment-item";
+    div.innerHTML = `<span>${docSnap.data().text}</span>
+                     <button onclick="deleteComment('${docSnap.id}')">🗑</button>`;
+    commentsList.appendChild(div);
+  });
+}
+
+window.deleteComment = async function(id){
+  const pass = prompt("Enter password to delete comment:");
+  if(pass==="2025"){
+    await deleteDoc(doc(db,"comments",id));
+    loadComments();
+  } else alert("Wrong password!");
+}
+
+addBtn.addEventListener("click", async ()=>{
+  if(input.value.trim()==="") return;
+  await addDoc(collection(db,"comments"),{text:input.value});
+  input.value="";
+  loadComments();
+});
+
+deleteAllBtn.addEventListener("click", async ()=>{
+  const pass = prompt("Enter password to delete all comments:");
+  if(pass==="1234"){
+    const snapshot = await getDocs(collection(db,"comments"));
+    for(const docSnap of snapshot.docs){
+      await deleteDoc(doc(db,"comments",docSnap.id));
+    }
+    loadComments();
+  } else alert("Wrong password!");
+});
+
+loadComments();
+
+// --- Admin Login ---
+const adminBtn = document.getElementById("adminLoginBtn");
+adminBtn.addEventListener("click", ()=>{
+  const user = prompt("Admin Username:");
+  const pass = prompt("Admin Password:");
+  if(user==="Nipun" && pass==="2025"){
+    window.location.href="admin.html";
+  } else { alert("Invalid credentials!"); }
+});
+</script>
 </body>
 </html>
