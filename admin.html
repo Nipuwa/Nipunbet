@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - KWAN MADUSANKA</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #001f3f, #000814);
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+    .editable {
+      border: 1px dashed #00bfff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    button {
+      background: #00bfff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔧 Admin Panel</h2>
+  <p>Edit your About section here 👇</p>
 
+  <div contenteditable="true" id="about" class="editable">
+    🌟 ඔබගේ <b>1XBET</b> ගිණුම් සඳහා ඉතා වේගවත් සහ විශ්වාසනීය සේවාවක් ලබාදේ.
+  </div>
+
+  <button onclick="saveContent()">💾 Save</button>
+  <button onclick="resetContent()">♻️ Reset</button>
+
+  <script>
+    const aboutDiv = document.getElementById('about');
+    if(localStorage.getItem('aboutContent')) {
+      aboutDiv.innerHTML = localStorage.getItem('aboutContent');
+    }
+
+    function saveContent() {
+      localStorage.setItem('aboutContent', aboutDiv.innerHTML);
+      alert('✅ Saved!');
+    }
+
+    function resetContent() {
+      localStorage.removeItem('aboutContent');
+      location.reload();
+    }
+  </script>
+</body>
+</html>
