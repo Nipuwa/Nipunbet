@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>KWAN MADUSANKA - Cash Agent Services</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
   * {
     margin: 0;
     padding: 0;
@@ -13,13 +15,19 @@
   }
 
   body {
-    background: #00162b;
+    background: linear-gradient(120deg, #001437, #002855, #000a1a);
     color: white;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
+    animation: bgmove 15s ease-in-out infinite alternate;
+  }
+
+  @keyframes bgmove {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
   }
 
   /* COVER HEADER */
@@ -30,6 +38,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
   }
 
   /* PROFILE WRAPPER */
@@ -40,14 +50,44 @@
     margin-bottom: 10px;
     border-radius: 50%;
     margin-top: -75px; /* overlap cover */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInUp 1.5s ease forwards 0.5s;
   }
 
   .profile-pic {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
+    border: 4px solid transparent;
+    background: linear-gradient(135deg, #00bfff, #0077ff, #00ffff);
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .profile-wrapper::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      #007bff,
+      #00e5ff,
+      #001f3f,
+      #007bff
+    );
+    animation: spin 4s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   h1 {
@@ -55,6 +95,7 @@
     margin-top: 10px;
     color: #aee6ff;
     text-align: center;
+    animation: fadeInUp 1.5s ease forwards 0.8s;
   }
 
   h3 {
@@ -62,6 +103,7 @@
     margin-top: 5px;
     color: #66d9ff;
     text-align: center;
+    animation: fadeInUp 1.5s ease forwards 1s;
   }
 
   /* BUTTONS */
@@ -73,6 +115,7 @@
     margin: 25px 0 40px;
     width: 90%;
     max-width: 500px;
+    animation: fadeInUp 1.5s ease forwards 1.2s;
   }
 
   .buttons a {
@@ -86,44 +129,13 @@
     text-align: center;
     transition: all 0.3s ease;
     display: inline-block;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
   }
 
   .buttons a:hover {
     background: linear-gradient(135deg, #00bfff, #00ffcc);
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-  }
-
-  /* ABOUT */
-  .about {
-    max-width: 700px;
-    background: rgba(0,255,0,0.05);
-    border-radius: 20px;
-    padding: 25px 30px;
-    margin: 20px auto;
-    text-align: left;
-    box-shadow: 0 8px 20px rgba(0,255,0,0.2);
-    backdrop-filter: blur(5px);
-    position: relative;
-  }
-
-  .about h2 {
-    color: #00ff00;
-    margin-bottom: 15px;
-    font-size: 24px;
-    text-align: center;
-  }
-
-  .about p, .about ul li {
-    color: #d6f0ff;
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-
-  .about ul {
-    list-style: disc inside;
-    padding-left: 15px;
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.6);
   }
 
   /* LIST BUTTONS */
@@ -134,6 +146,7 @@
     margin: 25px auto 40px;
     width: 90%;
     max-width: 450px;
+    animation: fadeInUp 1.5s ease forwards 1.4s;
   }
 
   .list button {
@@ -153,7 +166,26 @@
   .list button:hover {
     background: linear-gradient(135deg, #00bfff, #00ffcc);
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 18px rgba(0,255,255,0.6);
+  }
+
+  /* ABOUT */
+  section {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #001f3f, #003366, #000814);
+    color: white;
+    padding: 50px 25px;
+    border-radius: 25px;
+    text-align: center;
+    max-width: 900px;
+    margin: 50px auto;
+    box-shadow: 0 0 25px rgba(0, 153, 255, 0.4);
+    animation: glow 3s ease-in-out infinite alternate, fadeInUp 1.5s ease forwards 1.6s;
+  }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 25px rgba(0, 153, 255, 0.4); }
+    to { box-shadow: 0 0 45px rgba(0, 204, 255, 0.8); }
   }
 
   footer {
@@ -164,6 +196,7 @@
     width: 100%;
     text-align: center;
     background: rgba(0, 0, 30, 0.6);
+    animation: fadeInUp 1.5s ease forwards 2s;
   }
 
   footer a {
@@ -176,16 +209,21 @@
     text-decoration: underline;
   }
 
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   @media (max-width: 768px) {
     h1 { font-size: 24px; }
     h3 { font-size: 14px; }
     .buttons a { font-size: 15px; padding: 12px; min-width: 120px; }
     .list button { font-size: 15px; padding: 12px; }
-  }
-
-  @media (min-width: 1024px) {
-    .buttons a { font-size: 16px; padding: 14px 28px; }
-    .list button { font-size: 16px; padding: 14px; }
   }
 </style>
 </head>
@@ -200,58 +238,35 @@
   <h3>Master Agent | 1XBet | Melbet</h3>
 
   <div class="buttons">
-    <a href="https://wa.me/94724000887" target="_blank">💬 WhatsApp </a>
+    <a href="https://wa.me/94724000887" target="_blank">💬 WhatsApp</a>
     <a href="tel:+94726116388">📞 Call</a>
-    <a href="https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt" target="_blank">👥 WhatsApp Group</a>
+    <a href="https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt" target="_blank">👥 Group</a>
     <a href="https://www.facebook.com/share/1CSedskYWX/" target="_blank">📘 Facebook</a>
   </div>
- 
- <div class="list">
+
+  <div class="list">
     <button onclick="window.location.href='Proofs.html'">📢 Proof</button>
   </div>
 
- 
-    <section style="
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #001f3f, #003366, #000814);
-  color: white;
-  padding: 50px 25px;
-  border-radius: 25px;
-  text-align: center;
-  max-width: 900px;
-  margin: 50px auto;
-  box-shadow: 0 0 25px rgba(0, 153, 255, 0.4);
-  animation: glow 3s ease-in-out infinite alternate;
-">
+  <section>
+    <h2 style="font-size: 2.2em; margin-bottom: 15px; color: #00bfff; text-shadow: 0 0 15px #00bfff;">🏆 ABOUT 💬</h2>
+    <p style="font-size: 1.15em; line-height: 1.8;">
+      🌟 ඔබගේ <strong>1XBET සහ MELBET</strong> ගිණුම් සඳහා ඉතා වේගවත් සහ විශ්වාසනීය සේවාවක් අප විසින් ලබාදේ.
+    </p>
+    <div style="margin: 30px 0; font-size: 1.15em; line-height: 1.8;">
+      💳 <strong>Deposit</strong> – විනාඩියක් ඇතුළත<br>
+      🏦 <strong>Withdrawal</strong> – විනාඩි 5කින් ඔබේ පුද්ගලික බැංකු ගිණුමට<br>
+      🕒 <strong>සෙවාව</strong> – පැය 24යි | දින 7යි
+    </div>
+    <p style="font-size: 1.15em; margin-top: 20px;">
+      ඔබගේ විශ්වාසය අපගේ බලයයි. 🙏
+    </p>
+    <h3 style="margin-top: 15px; color: #00bfff; text-shadow: 0 0 12px #00bfff;">KWAN MADUSANKA (PVT)</h3>
+    <p style="font-size: 1.1em;">විශ්වාසනීය සහ වේගවත් සේවාවක් ඔබ සඳහා ❤️</p>
+  </section>
 
-  <h2 style="font-size: 2.2em; margin-bottom: 15px; color: #00bfff; text-shadow: 0 0 15px #00bfff;">🏆 ABOUT 💬</h2>
-  
-  <p style="font-size: 1.15em; line-height: 1.8;">
-    🌟 ඔබගේ <strong>1XBET සහ MELBET</strong> ගිණුම් සඳහා ඉතා වේගවත් සහ විශ්වාසනීය සේවාවක් අප විසින් ලබාදේ.
-  </p>
-
-  <div style="margin: 30px 0; font-size: 1.15em; line-height: 1.8;">
-    💳 <strong>Deposit</strong> – විනාඩියක් ඇතුළත<br>
-    🏦 <strong>Withdrawal</strong> – විනාඩි 5කින් ඔබේ පුද්ගලික බැංකු ගිණුමට<br>
-    🕒 <strong>සෙවාව</strong> – පැය 24යි | දින 7යි
-  </div>
-
-  <p style="font-size: 1.15em; margin-top: 20px;">
-    ඔබගේ විශ්වාසය අපගේ බලයයි. 🙏
-  </p>
-
-  <h3 style="margin-top: 15px; color: #00bfff; text-shadow: 0 0 12px #00bfff;">KWAN MADUSANKA (PVT)</h3>
-  <p style="font-size: 1.1em;">විශ්වාසනීය සහ වේගවත් සේවාවක් ඔබ සඳහා ❤️</p>
-
-  <style>
-    @keyframes glow {
-      from { box-shadow: 0 0 25px rgba(0, 153, 255, 0.4); }
-      to { box-shadow: 0 0 45px rgba(0, 204, 255, 0.8); }
-    }
-  </style>
-    </section>
   <div class="list">
-    <button onclick="window.location.href='Bank_Details.html'"> 🏦 Available Bank Details </button>
+    <button onclick="window.location.href='Bank_Details.html'">🏦 Available Bank Details</button>
     <button onclick="window.location.href='https://whatsapp.com/channel/0029Vb6hl5tH5JLyIRqdUB0f'">💸 Withdraw Details</button>
     <button onclick="window.location.href='https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt'">📶 Free Signal</button>
     <button onclick="window.location.href='promo.html'">🎁 Promo Codes & Links</button>
