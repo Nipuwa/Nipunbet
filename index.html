@@ -1,280 +1,168 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KWAN MADUSANKA - Cash Agent Services</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SL Social Promote</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f8fa;
+      color: #333;
+    }
+    header {
+      background: #2e3a59;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: url('https://via.placeholder.com/1200x400') no-repeat center center;
+      background-size: cover;
+      color: #fff;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin: 0 0 20px;
+    }
+    .hero p {
+      font-size: 20px;
+      margin: 0 0 40px;
+    }
+    .btn {
+      display: inline-block;
+      background: #ff6b6b;
+      color: #fff;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 60px 20px;
+    }
+    .feature-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .feature-box h3 {
+      margin: 0 0 15px;
+    }
+    .feature-box p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
 
-  body {
-    background: linear-gradient(120deg, #001437, #002855, #000a1a);
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
-    animation: bgmove 15s ease-in-out infinite alternate;
-  }
+    .how-it-works {
+      background: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .how-it-works h2 {
+      margin-bottom: 40px;
+    }
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    .step {
+      width: 200px;
+    }
+    .step h4 {
+      margin-bottom: 15px;
+    }
+    .step p {
+      font-size: 14px;
+    }
 
-  @keyframes bgmove {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
-  }
-
-  /* COVER HEADER */
-  .cover {
-    width: 100%;
-    height: 250px;
-    background: url('https://files.catbox.moe/n2xkvo.jpg') center/cover no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    opacity: 0;
-    animation: fadeIn 1.5s ease forwards;
-  }
-
-  /* PROFILE WRAPPER */
-  .profile-wrapper {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin-bottom: 10px;
-    border-radius: 50%;
-    margin-top: -75px; /* overlap cover */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeInUp 1.5s ease forwards 0.5s;
-  }
-
-  .profile-pic {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    border: 4px solid transparent;
-    background: linear-gradient(135deg, #00bfff, #0077ff, #00ffff);
-    background-clip: padding-box;
-    position: relative;
-  }
-
-  .profile-wrapper::before {
-    content: "";
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: conic-gradient(
-      from 0deg,
-      #007bff,
-      #00e5ff,
-      #001f3f,
-      #007bff
-    );
-    animation: spin 4s linear infinite;
-    z-index: -1;
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  h1 {
-    font-size: 28px;
-    margin-top: 10px;
-    color: #aee6ff;
-    text-align: center;
-    animation: fadeInUp 1.5s ease forwards 0.8s;
-  }
-
-  h3 {
-    font-weight: 400;
-    margin-top: 5px;
-    color: #66d9ff;
-    text-align: center;
-    animation: fadeInUp 1.5s ease forwards 1s;
-  }
-
-  /* BUTTONS */
-  .buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin: 25px 0 40px;
-    width: 90%;
-    max-width: 500px;
-    animation: fadeInUp 1.5s ease forwards 1.2s;
-  }
-
-  .buttons a {
-    text-decoration: none;
-    color: white;
-    background: linear-gradient(135deg, #007fff, #00d4ff);
-    padding: 12px 20px;
-    border-radius: 25px;
-    font-weight: 600;
-    min-width: 140px;
-    text-align: center;
-    transition: all 0.3s ease;
-    display: inline-block;
-    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
-  }
-
-  .buttons a:hover {
-    background: linear-gradient(135deg, #00bfff, #00ffcc);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.6);
-  }
-
-  /* LIST BUTTONS */
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 25px auto 40px;
-    width: 90%;
-    max-width: 450px;
-    animation: fadeInUp 1.5s ease forwards 1.4s;
-  }
-
-  .list button {
-    background: linear-gradient(135deg, #007bff, #00d4ff);
-    color: #fff;
-    border: none;
-    padding: 14px 20px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    width: 100%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
-
-  .list button:hover {
-    background: linear-gradient(135deg, #00bfff, #00ffcc);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 18px rgba(0,255,255,0.6);
-  }
-
-  /* ABOUT */
-  section {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #001f3f, #003366, #000814);
-    color: white;
-    padding: 50px 25px;
-    border-radius: 25px;
-    text-align: center;
-    max-width: 900px;
-    margin: 50px auto;
-    box-shadow: 0 0 25px rgba(0, 153, 255, 0.4);
-    animation: glow 3s ease-in-out infinite alternate, fadeInUp 1.5s ease forwards 1.6s;
-  }
-
-  @keyframes glow {
-    from { box-shadow: 0 0 25px rgba(0, 153, 255, 0.4); }
-    to { box-shadow: 0 0 45px rgba(0, 204, 255, 0.8); }
-  }
-
-  footer {
-    margin-top: auto;
-    padding: 15px 10px;
-    font-size: 14px;
-    color: #aee6ff;
-    width: 100%;
-    text-align: center;
-    background: rgba(0, 0, 30, 0.6);
-    animation: fadeInUp 1.5s ease forwards 2s;
-  }
-
-  footer a {
-    color: #00bfff;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  footer a:hover {
-    text-decoration: underline;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 768px) {
-    h1 { font-size: 24px; }
-    h3 { font-size: 14px; }
-    .buttons a { font-size: 15px; padding: 12px; min-width: 120px; }
-    .list button { font-size: 15px; padding: 12px; }
-  }
-</style>
+    footer {
+      background: #2e3a59;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-  <div class="cover"></div>
+  <header>
+    <h1>SL Social Promote</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Pricing</a>
+      <a href="#">API</a>
+      <a href="#">Contact</a>
+      <a href="#">Login</a>
+      <a href="#">Register</a>
+    </nav>
+  </header>
 
-  <div class="profile-wrapper">
-    <img src="https://files.catbox.moe/149vwh.jpg" alt="Profile" class="profile-pic" />
-  </div>
-
-  <h1>KWAN MADUSANKA</h1>
-  <h3>Master Agent | 1XBet | Melbet</h3>
-
-  <div class="buttons">
-    <a href="https://wa.me/94724000887" target="_blank">💬 WhatsApp</a>
-    <a href="tel:+94726116388">📞 Call</a>
-    <a href="https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt" target="_blank">👥 Group</a>
-    <a href="https://www.facebook.com/share/1CSedskYWX/" target="_blank">📘 Facebook</a>
-  </div>
-
-  <div class="list">
-    <button onclick="window.location.href='Proofs.html'">📢 Proof</button>
-  </div>
-
-  <section>
-    <h2 style="font-size: 2.2em; margin-bottom: 15px; color: #00bfff; text-shadow: 0 0 15px #00bfff;">🏆 ABOUT 💬</h2>
-    <p style="font-size: 1.15em; line-height: 1.8;">
-      🌟 ඔබගේ <strong>1XBET සහ MELBET</strong> ගිණුම් සඳහා ඉතා වේගවත් සහ විශ්වාසනීය සේවාවක් අප විසින් ලබාදේ.
-    </p>
-    <div style="margin: 30px 0; font-size: 1.15em; line-height: 1.8;">
-      💳 <strong>Deposit</strong> – විනාඩියක් ඇතුළත<br>
-      🏦 <strong>Withdrawal</strong> – විනාඩි 5කින් ඔබේ පුද්ගලික බැංකු ගිණුමට<br>
-      🕒 <strong>සෙවාව</strong> – පැය 24යි | දින 7යි
-    </div>
-    <p style="font-size: 1.15em; margin-top: 20px;">
-      ඔබගේ විශ්වාසය අපගේ බලයයි. 🙏
-    </p>
-    <h3 style="margin-top: 15px; color: #00bfff; text-shadow: 0 0 12px #00bfff;">KWAN MADUSANKA (PVT)</h3>
-    <p style="font-size: 1.1em;">විශ්වාසනීය සහ වේගවත් සේවාවක් ඔබ සඳහා ❤️</p>
+  <section class="hero">
+    <h1>Grow Your Social Media Effortlessly</h1>
+    <p>Buy real likes, followers, views, and more — instant delivery, trusted service.</p>
+    <a href="#" class="btn">Get Started</a>
   </section>
 
-  <div class="list">
-    <button onclick="window.location.href='Bank_Details.html'">🏦 Available Bank Details</button>
-    <button onclick="window.location.href='https://whatsapp.com/channel/0029Vb6hl5tH5JLyIRqdUB0f'">💸 Withdraw Details</button>
-    <button onclick="window.location.href='https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt'">📶 Free Signal</button>
-    <button onclick="window.location.href='promo.html'">🎁 Promo Codes & Links</button>
-  </div>
+  <section class="features">
+    <div class="feature-box">
+      <h3>Instant Delivery</h3>
+      <p>We provide lightning-fast delivery for all orders — no waiting, no delay.</p>
+    </div>
+    <div class="feature-box">
+      <h3>API Access</h3>
+      <p>Automate your orders using our API. Perfect for resellers and developers.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Multiple Services</h3>
+      <p>From Instagram followers to YouTube views – pick what you need.</p>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <h4>1. Select Service</h4>
+        <p>Choose from our catalog of verified SMM services.</p>
+      </div>
+      <div class="step">
+        <h4>2. Place Order</h4>
+        <p>Enter your link and quantity, then pay using your preferred method.</p>
+      </div>
+      <div class="step">
+        <h4>3. Receive Service</h4>
+        <p>Your order gets processed instantly or as per schedule.</p>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    © 2025 Official KWAN MADUSANKA. All Rights Reserved.<br>
-    Developed by <a href="#">Nipun</a>
+    <p>&copy; 2025 SL Social Promote. All rights reserved.</p>
   </footer>
 </body>
 </html>
