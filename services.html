@@ -1,107 +1,36 @@
+<?php
+session_start();
+if(!isset($_SESSION['username'])){
+    header("Location: login.html");
+    exit();
+}
+$username = $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services – SL SMM PANEL</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – SL SMM PANEL</title>
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #f3f5f9;
-      color: #222;
-    }
-    /* Header */
-    header {
-      background: #0d47a1;
-      padding: 20px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header h1 {
-      font-size: 24px;
-      margin: 0;
-    }
-    header nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 60px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #0d47a1, #1976d2);
-      color: white;
-    }
-    .hero h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    /* Services Section */
-    .services {
-      padding: 50px 20px;
-      text-align: center;
-    }
-    .services h3 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    .box-area {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .box {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-    .box:hover {
-      transform: translateY(-6px);
-    }
-    .box h4 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-    .box p {
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-    .box button {
-      padding: 10px 20px;
-      border: none;
-      background: #0d47a1;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .box button:hover {
-      background: #1565c0;
-    }
-
-    /* Footer */
-    footer {
-      background: #0d47a1;
-      padding: 15px;
-      color: #fff;
-      text-align: center;
-      margin-top: 40px;
-    }
+    body { font-family:"Segoe UI", sans-serif; margin:0; background:#f3f5f9; }
+    header { background:#0d47a1; color:#fff; padding:20px; display:flex; justify-content:space-between; align-items:center; }
+    header h1 { margin:0; font-size:24px; }
+    header nav a { color:#fff; margin-left:20px; text-decoration:none; font-weight:500; }
+    header .logout { background:#f44336; padding:8px 12px; border-radius:6px; text-decoration:none; }
+    .hero { text-align:center; padding:50px 20px; background:linear-gradient(135deg,#0d47a1,#1976d2); color:#fff; }
+    .hero h2 { font-size:32px; margin-bottom:10px; }
+    .hero p { font-size:16px; }
+    .services { padding:50px 20px; text-align:center; }
+    .services h3 { font-size:32px; margin-bottom:20px; }
+    .box-area { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; max-width:1000px; margin:auto; }
+    .box { background:white; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1); transition:.3s; }
+    .box:hover { transform:translateY(-6px); }
+    .box h4 { font-size:22px; margin-bottom:10px; }
+    .box p { font-size:16px; margin-bottom:15px; }
+    .box button { padding:10px 20px; border:none; background:#0d47a1; color:white; border-radius:6px; cursor:pointer; font-size:14px; }
+    .box button:hover { background:#1565c0; }
+    footer { background:#0d47a1; padding:15px; color:#fff; text-align:center; margin-top:40px; }
   </style>
 </head>
 <body>
@@ -109,10 +38,8 @@
 <header>
   <h1>SL SMM PANEL</h1>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="api.html">API</a>
-    <a href="login.html">Login</a>
+    <span>Welcome, <?php echo htmlspecialchars($username); ?>!</span>
+    <a href="services.php?logout=1" class="logout">Logout</a>
   </nav>
 </header>
 
