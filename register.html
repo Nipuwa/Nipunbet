@@ -1,178 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA — Create Account</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NOVA — Sign Up</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
 <style>
-:root {
+  :root{
     --bg:#0b0b0d;
-    --card:#141416;
-    --text:#ffffff;
+    --card:#111217;
     --muted:#9aa0b5;
     --accent1:#247BFD;
     --accent2:#B624FE;
-    --radius:14px;
-}
-*{ box-sizing:border-box; }
-
-body{
+    --white:#ffffff;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{
     margin:0;
-    font-family:"Inter", sans-serif;
-    background:var(--bg);
-    color:var(--text);
-}
+    font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+    background:linear-gradient(180deg,#050508 0%, #0b0b0d 100%);
+    color:var(--white);
+  }
 
-/* PAGE WRAPPER */
-.wrap{
-    display:flex;
-    justify-content:center;
-    padding:40px 16px;
+  /* container */
+  .page {
     min-height:100vh;
-}
-
-/* CARD */
-.card{
-    width:100%;
-    max-width:420px;
-    background:var(--card);
-    padding:32px;
-    border-radius:var(--radius);
-    box-shadow:0 12px 40px rgba(0,0,0,0.55);
-    border:1px solid rgba(255,255,255,0.04);
-    text-align:center;
-}
-
-/* BIG LOGO */
-.card img{
-    width:120px;
-    height:120px;
-    border-radius:18px;
-    object-fit:cover;
-    margin-bottom:10px;
-}
-
-/* HEADINGS */
-.card h1{
-    margin:0;
-    font-size:24px;
-    font-weight:700;
-}
-.card p{
-    margin-top:6px;
-    color:var(--muted);
-    font-size:14px;
-    margin-bottom:20px;
-}
-
-/* INPUTS */
-label{
-    display:block;
-    text-align:left;
-    font-weight:600;
-    margin-bottom:6px;
-}
-input{
-    width:100%;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,0.05);
-    background:#0f0f12;
-    font-size:15px;
-    color:var(--text);
-    margin-bottom:16px;
-}
-input::placeholder{
-    color:#6f7585;
-}
-
-/* CHECKBOX */
-.checkbox{
     display:flex;
     align-items:center;
+    justify-content:center;
+    padding:32px;
+  }
+
+  /* card */
+  .card {
+    width:100%;
+    max-width:440px;
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:28px;
+    box-shadow:0 14px 50px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.03);
+  }
+
+  /* logo container — ensures image won't be cropped */
+  .logo-wrap {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:14px;
+  }
+  .logo-box {
+    width:140px;
+    height:140px;
+    border-radius:20px;
+    background:#000; /* black box so white text visible */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:visible; /* important: do not hide */
+    padding:10px;
+  }
+  .logo-box img {
+    width:100%;
+    height:100%;
+    object-fit:contain; /* keep whole image visible */
+    display:block;
+    border-radius:12px;
+  }
+
+  h1 { text-align:center; margin:6px 0 6px; font-size:22px; }
+  p.lead { text-align:center; color:var(--muted); margin:0 0 18px; font-size:14px; }
+
+  label { display:block; margin-top:12px; margin-bottom:6px; font-weight:600; color:#e6eefc; }
+  input[type="text"], input[type="email"], input[type="password"]{
+    width:100%;
+    padding:12px 14px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.02);
+    color:var(--white);
+    font-size:15px;
+    outline:none;
+  }
+  input::placeholder { color: #78869a; }
+
+  .terms {
+    display:flex;
     gap:10px;
+    align-items:center;
+    margin-top:12px;
     color:var(--muted);
     font-size:14px;
-    margin-bottom:14px;
-}
-.checkbox input{
-    width:18px;
-    height:18px;
-}
+  }
 
-/* BUTTON */
-.btn{
+  .btn {
     width:100%;
-    padding:14px;
+    margin-top:16px;
+    padding:12px 14px;
     border-radius:12px;
-    font-size:16px;
-    font-weight:700;
-    cursor:pointer;
-    color:#fff;
     border:0;
-    background:linear-gradient(135deg,var(--accent1),var(--accent2));
-    transition:0.2s;
-}
-.btn:hover{
-    opacity:0.9;
-}
-
-/* BOTTOM LINKS */
-.bottom{
-    margin-top:14px;
-    font-size:14px;
-}
-.bottom a{
-    color:#4ca1ff;
-    text-decoration:none;
     font-weight:700;
-}
+    font-size:16px;
+    color:#fff;
+    background: linear-gradient(135deg,var(--accent1),var(--accent2));
+    cursor:pointer;
+  }
+
+  .foot {
+    text-align:center;
+    margin-top:12px;
+    color:var(--muted);
+    font-size:14px;
+  }
+  .foot a { color:#78b3ff; text-decoration:none; font-weight:700; }
+
+  /* responsive tweaks */
+  @media (max-width:420px){
+    .logo-box { width:110px; height:110px; padding:8px; }
+    .card { padding:20px; border-radius:12px; }
+  }
 </style>
 </head>
-
 <body>
 
-<div class="wrap">
-    <div class="card">
-        
-        <!-- BIG LOGO (YOUR LOGO) -->
-        <img src="https://files.catbox.moe/ucpygr.jpg" alt="NOVA Logo">
-
-        <h1>Create Account</h1>
-        <p>Join the Nova SMM Panel to start using our premium services.</p>
-
-        <!-- UPDATE THIS ACTION URL -->
-        <form action="https://yourdomain.com/backend/services.php" method="POST">
-
-            <input type="hidden" name="register" value="1">
-
-            <label>Username</label>
-            <input type="text" name="username" placeholder="Enter username" required>
-
-            <label>Email</label>
-            <input type="email" name="email" placeholder="email@example.com" required>
-
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Create password" required>
-
-            <label>Confirm Password</label>
-            <input type="password" name="password2" placeholder="Repeat password" required>
-
-            <div class="checkbox">
-                <input type="checkbox" required>
-                <span>I agree to the Terms & Conditions</span>
-            </div>
-
-            <button class="btn">Sign Up</button>
-        </form>
-
-        <div class="bottom">
-            Already have an account? <a href="login.html">Login</a>
-        </div>
+<div class="page">
+  <div class="card">
+    <div class="logo-wrap">
+      <div class="logo-box" aria-hidden="true">
+        <!-- use your logo URL here -->
+        <img src="https://files.catbox.moe/ucpygr.jpg" alt="NOVA logo" id="novaLogo">
+      </div>
     </div>
+
+    <h1>Create your account</h1>
+    <p class="lead">Join Nova SMM Panel — register to order social media services instantly.</p>
+
+    <!-- CHANGE action to your real backend URL (Verpex) -->
+    <form id="regForm" action="https://yourdomain.com/backend/services.php" method="POST" novalidate>
+      <input type="hidden" name="register" value="1" />
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" placeholder="Enter username" required minlength="3">
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="email@example.com" required>
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" placeholder="Create password" required minlength="6">
+
+      <label for="password2">Confirm Password</label>
+      <input id="password2" type="password" placeholder="Repeat password" required minlength="6">
+
+      <div class="terms">
+        <input id="terms" name="terms" type="checkbox" required>
+        <label for="terms" style="margin:0;font-weight:500;color:var(--muted)">I agree to the Terms & Conditions</label>
+      </div>
+
+      <button class="btn" type="submit">Sign Up</button>
+    </form>
+
+    <div class="foot">Already have an account? <a href="login.html">Sign in</a></div>
+  </div>
 </div>
+
+<!-- Optional small script to force that logo uses contain and not be cropped (extra safety) -->
+<script>
+  (function(){
+    const img = document.getElementById('novaLogo');
+    // ensure object-fit contains
+    img.style.objectFit = 'contain';
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '100%';
+  })();
+</script>
 
 </body>
 </html>
