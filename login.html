@@ -1,75 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login – SL SMM PANEL</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #f3f5f9;
-      color: #222;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .form-box {
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      max-width: 400px;
-      width: 100%;
-    }
-    .form-box h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .form-box input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
-    .form-box button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background: #0d47a1;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .form-box button:hover {
-      background: #1565c0;
-    }
-    .form-box p {
-      margin-top: 15px;
-      text-align: center;
-    }
-    .form-box a {
-      color: #0d47a1;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NOVA — Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#0b0b0d;
+    --card:#141416;
+    --text:#ffffff;
+    --muted:#9aa0b5;
+    --accent1:#247BFD;
+    --accent2:#B624FE;
+    --radius:14px;
+}
+*{box-sizing:border-box;}
+body{
+    margin:0;
+    font-family:"Inter", sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* TOP BAR */
+.topbar{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:20px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.topbar img{
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    object-fit:cover;
+}
+.topbar-title{
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:0.6px;
+}
+
+/* CENTER LAYOUT */
+.center-wrap{
+    display:flex;
+    justify-content:center;
+    padding:40px 16px;
+    min-height:calc(100vh - 90px);
+}
+
+/* CARD */
+.card{
+    width:100%;
+    max-width:420px;
+    background:var(--card);
+    padding:32px;
+    border-radius:var(--radius);
+    box-shadow:0 12px 40px rgba(0,0,0,0.55);
+    border:1px solid rgba(255,255,255,0.04);
+}
+.card h1{
+    margin:0;
+    font-size:24px;
+    font-weight:700;
+}
+.card p{
+    color:var(--muted);
+    margin-top:6px;
+    font-size:14px;
+}
+
+/* INPUTS */
+label{
+    display:block;
+    margin-top:18px;
+    margin-bottom:6px;
+    font-weight:600;
+}
+input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.05);
+    background:#0f0f12;
+    font-size:15px;
+    color:#fff;
+}
+input::placeholder{
+    color:#6f7585;
+}
+
+/* BUTTON */
+.btn{
+    width:100%;
+    padding:14px;
+    margin-top:26px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    color:#fff;
+    cursor:pointer;
+    border:0;
+    background:linear-gradient(135deg,var(--accent1),var(--accent2));
+    transition:0.2s;
+}
+.btn:hover{
+    opacity:0.9;
+}
+
+/* BOTTOM LINKS */
+.bottom{
+    margin-top:16px;
+    text-align:center;
+    font-size:14px;
+    color:var(--muted);
+}
+.bottom a{
+    color:#4ca1ff;
+    text-decoration:none;
+    font-weight:700;
+}
+
+/* SMALL OPTIONS */
+.helper{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:10px;
+    font-size:14px;
+    color:var(--muted);
+}
+.helper a{
+    color:#4ca1ff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.error{
+    display:none;
+    background:#3d0c0c;
+    border-left:3px solid #ff6b6b;
+    padding:10px;
+    border-radius:8px;
+    margin-top:14px;
+    color:#ffb2b2;
+}
+</style>
 </head>
+
 <body>
 
-<div class="form-box">
-  <h2>Login</h2>
-  <form action="services.php" method="POST">
-    <input type="text" name="username" placeholder="Username or Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit" name="login">Login</button>
-  </form>
-  <p>Don't have an account? <a href="register.html">Register</a></p>
+<!-- HEADER -->
+<div class="topbar">
+    <img src="https://files.catbox.moe/ucpygr.jpg" alt="NOVA Logo">
+    <div class="topbar-title">NOVA SMM PROVIDER</div>
+</div>
+
+<!-- LOGIN CARD -->
+<div class="center-wrap">
+    <div class="card">
+        <h1>Welcome Back</h1>
+        <p>Sign in to continue using Nova Panel.</p>
+
+        <div id="err" class="error"></div>
+
+        <!-- UPDATE action with your backend URL -->
+        <form id="loginForm" action="https://yourdomain.com/backend/services.php" method="POST">
+
+            <input type="hidden" name="login" value="1">
+
+            <label>Username or Email</label>
+            <input type="text" name="username" placeholder="Enter username or email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter password" required>
+
+            <div class="helper">
+                <label><input type="checkbox" name="remember"> Remember me</label>
+                <a href="#">Forgot?</a>
+            </div>
+
+            <button class="btn">Sign In</button>
+        </form>
+
+        <div class="bottom">
+            Don’t have an account? <a href="signup.html">Create Account</a>
+        </div>
+    </div>
 </div>
 
 </body>
