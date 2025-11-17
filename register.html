@@ -3,149 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA — Sign Up</title>
-
+<title>NOVA — Create Account</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --bg-dark: #0b0b0d;
-    --card-dark: #16161a;
-    --text: #ffffff;
-    --muted: #9aa0b5;
-    --gradient: linear-gradient(135deg, #247BFD, #B624FE);
-    --gradient-hover: linear-gradient(135deg, #1A63CE, #9F1DE3);
-    --radius: 14px;
+    --bg:#0b0b0d;
+    --card:#141416;
+    --text:#ffffff;
+    --muted:#9aa0b5;
+    --accent1:#247BFD;
+    --accent2:#B624FE;
+    --radius:14px;
 }
-* { box-sizing: border-box; }
+*{ box-sizing:border-box; }
 
-body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    background: var(--bg-dark);
-    color: var(--text);
-}
-
-/* HEADER */
-.header {
-    padding: 22px 26px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.header img {
-    width: 46px;
-}
-.header-title {
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: 1px;
+body{
+    margin:0;
+    font-family:"Inter", sans-serif;
+    background:var(--bg);
+    color:var(--text);
 }
 
-/* SIGNUP CARD */
-.container {
-    display: flex;
-    justify-content: center;
-    padding: 40px 16px;
+/* PAGE WRAPPER */
+.wrap{
+    display:flex;
+    justify-content:center;
+    padding:40px 16px;
+    min-height:100vh;
 }
-.card {
-    width: 100%;
-    max-width: 420px;
-    background: var(--card-dark);
-    padding: 32px;
-    border-radius: var(--radius);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+
+/* CARD */
+.card{
+    width:100%;
+    max-width:420px;
+    background:var(--card);
+    padding:32px;
+    border-radius:var(--radius);
+    box-shadow:0 12px 40px rgba(0,0,0,0.55);
+    border:1px solid rgba(255,255,255,0.04);
+    text-align:center;
 }
-.card h2 {
-    margin-top: 0;
-    font-size: 24px;
-    font-weight: 700;
+
+/* BIG LOGO */
+.card img{
+    width:120px;
+    height:120px;
+    border-radius:18px;
+    object-fit:cover;
+    margin-bottom:10px;
 }
-.card p {
-    color: var(--muted);
-    font-size: 14px;
-    margin-top: 4px;
+
+/* HEADINGS */
+.card h1{
+    margin:0;
+    font-size:24px;
+    font-weight:700;
+}
+.card p{
+    margin-top:6px;
+    color:var(--muted);
+    font-size:14px;
+    margin-bottom:20px;
 }
 
 /* INPUTS */
-label { font-size: 14px; font-weight: 600; }
-input {
-    width: 100%;
-    padding: 14px;
-    margin-top: 6px;
-    margin-bottom: 18px;
-    background: #0f0f12;
-    border: 1px solid #2c2c33;
-    border-radius: 10px;
-    font-size: 15px;
-    color: #fff;
+label{
+    display:block;
+    text-align:left;
+    font-weight:600;
+    margin-bottom:6px;
 }
-input::placeholder {
-    color: #6b6f7d;
+input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.05);
+    background:#0f0f12;
+    font-size:15px;
+    color:var(--text);
+    margin-bottom:16px;
+}
+input::placeholder{
+    color:#6f7585;
 }
 
 /* CHECKBOX */
-.checkbox {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: -6px;
-    margin-bottom: 14px;
-    font-size: 14px;
-    color: var(--muted);
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--muted);
+    font-size:14px;
+    margin-bottom:14px;
 }
-.checkbox input {
-    width: 18px;
-    height: 18px;
+.checkbox input{
+    width:18px;
+    height:18px;
 }
 
 /* BUTTON */
-button {
-    width: 100%;
-    padding: 14px;
-    background: var(--gradient);
-    border: 0;
-    border-radius: 12px;
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.2s;
+.btn{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    color:#fff;
+    border:0;
+    background:linear-gradient(135deg,var(--accent1),var(--accent2));
+    transition:0.2s;
 }
-button:hover {
-    background: var(--gradient-hover);
+.btn:hover{
+    opacity:0.9;
 }
 
 /* BOTTOM LINKS */
-.bottom {
-    margin-top: 16px;
-    text-align: center;
+.bottom{
+    margin-top:14px;
+    font-size:14px;
 }
-.bottom a {
-    color: #4ca1ff;
-    text-decoration: none;
-    font-weight: 600;
+.bottom a{
+    color:#4ca1ff;
+    text-decoration:none;
+    font-weight:700;
 }
-
 </style>
 </head>
+
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <img src="https://files.catbox.moe/ucpygr.jpg" alt="Nova Logo">
-    <div class="header-title">NOVA SMM PROVIDER</div>
-</div>
-
-<!-- SIGNUP CARD -->
-<div class="container">
+<div class="wrap">
     <div class="card">
-        <h2>Create Account</h2>
-        <p>Join Nova Panel to access premium SMM services.</p>
+        
+        <!-- BIG LOGO (YOUR LOGO) -->
+        <img src="https://files.catbox.moe/ucpygr.jpg" alt="NOVA Logo">
 
-        <!-- UPDATE ACTION TO YOUR BACKEND URL -->
-        <form action="backend/services.php" method="POST">
+        <h1>Create Account</h1>
+        <p>Join the Nova SMM Panel to start using our premium services.</p>
+
+        <!-- UPDATE THIS ACTION URL -->
+        <form action="https://yourdomain.com/backend/services.php" method="POST">
 
             <input type="hidden" name="register" value="1">
 
@@ -156,21 +155,21 @@ button:hover {
             <input type="email" name="email" placeholder="email@example.com" required>
 
             <label>Password</label>
-            <input type="password" name="password" placeholder="Enter password" required>
+            <input type="password" name="password" placeholder="Create password" required>
 
             <label>Confirm Password</label>
-            <input type="password" name="password2" placeholder="Confirm password" required>
+            <input type="password" name="password2" placeholder="Repeat password" required>
 
             <div class="checkbox">
                 <input type="checkbox" required>
                 <span>I agree to the Terms & Conditions</span>
             </div>
 
-            <button type="submit">Sign Up</button>
+            <button class="btn">Sign Up</button>
         </form>
 
         <div class="bottom">
-            Already have an account? <a href="login.html">Log in</a>
+            Already have an account? <a href="login.html">Login</a>
         </div>
     </div>
 </div>
