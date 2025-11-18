@@ -1,138 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SMM Panel – Fast & Reliable</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #f3f5f9;
-      color: #222;
-    }
-    /* Header */
-    header {
-      background: #0d47a1;
-      padding: 20px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header h1 {
-      font-size: 24px;
-      margin: 0;
-    }
-    header nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nova Panel — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f5f9;
+    --panel-bg:#0b0b0d;
+    --card:#111217;
+    --muted:#9aa0b5;
+    --accent1:#6dd3ff;
+    --accent2:#b86bff;
+    --accent-grad: linear-gradient(90deg,var(--accent1),var(--accent2));
+    --shadow: 0 10px 30px rgba(2,6,23,0.12);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+    background:linear-gradient(180deg,#f6f8fb,#eef2f8);
+    color:#0f1724;
+  }
 
-    /* Hero Section */
-    .hero {
-      padding: 80px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #0d47a1, #1976d2);
-      color: white;
-    }
-    .hero h2 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-    .hero button {
-      padding: 14px 28px;
-      border: none;
-      background: #fff;
-      color: #0d47a1;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  /* Header */
+  header.top {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 16px;
+    background:var(--accent-grad);
+    color:#fff;
+  }
+  .brand { display:flex; gap:12px; align-items:center; }
+  .brand img{ width:44px; height:44px; border-radius:10px; object-fit:cover; background:#000; }
+  .brand h1{ margin:0; font-size:18px; letter-spacing:0.6px; font-weight:700; }
+  .menu-btn{ width:40px; height:40px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.08); border-radius:10px; }
 
-    /* Services Overview */
-    .services {
-      padding: 50px 20px;
-      text-align: center;
-    }
-    .services h3 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    .box-area {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .box {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-    .box:hover {
-      transform: translateY(-6px);
-    }
+  /* container */
+  .container { max-width:920px; margin:18px auto; padding:0 16px 60px; }
 
-    /* Footer */
-    footer {
-      background: #0d47a1;
-      padding: 15px;
-      color: #fff;
-      text-align: center;
-      margin-top: 40px;
-    }
-  </style>
+  /* hero callouts */
+  .hero {
+    background: linear-gradient(180deg,#ffffff,#f7fbff);
+    border-radius:14px;
+    padding:18px;
+    box-shadow:var(--shadow);
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .hero .cta { display:flex; gap:10px; align-items:center; }
+  .btn { padding:10px 14px; border-radius:10px; border:0; cursor:pointer; font-weight:700; }
+  .btn-outline { background:#fff; color:var(--accent2); border:1px solid rgba(0,0,0,0.06); }
+  .btn-primary { background:var(--accent1); color:#062034; box-shadow:0 6px 18px rgba(36,111,190,0.12); }
+
+  /* order card */
+  .order-card{
+    margin-top:16px;
+    background:#fff;
+    padding:14px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
+  }
+  .order-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .field { flex:1 1 200px; min-width:160px; }
+  label{ display:block; font-size:13px; font-weight:700; color:#102033; margin-bottom:6px; }
+  input[type="text"], input[type="number"], select {
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #e6edf6;
+    background:#fbfdff;
+    font-size:14px;
+    outline:none;
+  }
+  .submit-order { margin-top:12px; padding:12px; border-radius:12px; background:linear-gradient(90deg,#6dd3ff,#b86bff); border:0; color:#021; font-weight:800; width:220px; }
+
+  /* updates area */
+  .updates {
+    margin-top:18px;
+    background:#fff;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:var(--shadow);
+  }
+  .updates h3 { margin:0 0 10px 0; font-size:18px; }
+  .updates p { margin:0 0 8px 0; color:#334155; line-height:1.45; }
+
+  /* stats cards */
+  .stats {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:18px;
+  }
+  .stat {
+    display:flex;
+    gap:12px;
+    align-items:center;
+    background:#fff;
+    padding:12px;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+  }
+  .stat .icon {
+    width:56px; height:56px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(180deg, rgba(184,107,255,0.14), rgba(109,211,255,0.14));
+    flex-shrink:0;
+  }
+  .stat .meta { flex:1; }
+  .stat .meta h4 { margin:0; font-size:18px; }
+  .stat .meta p { margin:4px 0 0 0; color:var(--muted); font-size:13px; }
+
+  /* larger grid for bottom cards */
+  .bottom-grid {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    margin-top:18px;
+  }
+
+  /* floating chat button (example) */
+  .chat {
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    width:56px; height:56px;
+    border-radius:50%;
+    background:linear-gradient(90deg,#b86bff,#6dd3ff);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 30px rgba(11,17,26,0.35);
+    z-index:60;
+    color:#fff;
+    font-weight:800;
+  }
+
+  /* responsive */
+  @media (max-width:720px){
+    .stats { grid-template-columns:1fr 1fr; }
+    .hero { flex-direction:column; gap:12px; align-items:flex-start; }
+    .order-row { flex-direction:column; }
+  }
+  @media (max-width:480px){
+    .stats { grid-template-columns:1fr; }
+    .stat .icon{ width:52px; height:52px }
+    .submit-order{ width:100%; }
+  }
+
+  /* small styling for headings inside card */
+  .card-title { font-weight:800; font-size:16px; margin-bottom:8px; }
+</style>
 </head>
 <body>
 
-<header>
-  <h1>SL SMM PANEL</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="services.html">Services</a>
-    <a href="api.html">API</a>
-    <a href="login.html">Login</a>
-  </nav>
+<header class="top" role="banner">
+  <div class="brand">
+    <img src="https://files.catbox.moe/ucpygr.jpg" alt="Nova Logo">
+    <h1>NOVA SMM PROVIDER</h1>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <div class="menu-btn" title="Menu">≡</div>
+  </div>
 </header>
 
-<section class="hero">
-  <h2>Fast & Affordable SMM Services</h2>
-  <p>Boost your Social Media instantly with 24/7 automated delivery.</p>
-  <button onclick="window.location.href='register.html'">Create Account</button>
-</section>
+<main class="container" role="main">
 
-<section class="services">
-  <h3>Popular Services</h3>
-  <div class="box-area">
-    <div class="box">
-      <h4>Instagram Followers</h4>
-      <p>High quality, instant start.</p>
+  <!-- HERO / CTA -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div>
+      <h2 id="heroTitle" style="margin:0 0 6px 0">Join our Telegram & Whatsapp Channels</h2>
+      <p style="margin:0;color:#093049">Now it's time to connect — stay updated with new services & offers.</p>
     </div>
-    <div class="box">
-      <h4>TikTok Likes</h4>
-      <p>Real engagement guaranteed.</p>
+    <div class="cta">
+      <button class="btn btn-outline" onclick="window.open('#','_blank')">JOIN TELEGRAM</button>
+      <button class="btn btn-primary" onclick="window.open('#','_blank')">JOIN WHATSAPP</button>
     </div>
-    <div class="box">
-      <h4>YouTube Views</h4>
-      <p>Safe and fast delivery.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  © 2026 SL SMM PANEL – All Rights Reserved
-</footer>
+  <!-- ORDER FORM -->
+  <section class="order-card" aria-labelledby="orderTitle">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div class="card-title" id="orderTitle">Quick Order</div>
+        <div style="color:var(--muted);font-size:13px;">Search services or select from categories</div>
+      </div>
+      <div style="font-size:13px;color:var(--muted)">Balance: <strong id="balSmall">$1.375606</strong></div>
+    </div>
 
+    <form id="orderForm" onsubmit="return submitOrder(event)">
+      <div class="order-row">
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category">
+            <option>BestSmmProvider - Recommended</option>
+            <option>Instagram</option>
+            <option>TikTok</option>
+            <option>YouTube</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="service">Service</label>
+          <select id="service">
+            <option value="3402">3402 — Instagram Followers</option>
+            <option value="2001">2001 — Instagram Likes</option>
+            <option value="4501">4501 — TikTok Followers</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="link">Link</label>
+          <input id="link" type="text" placeholder="Profile or post link" required>
+        </div>
+
+        <div class="field">
+          <label for="quantity">Quantity</label>
+          <input id="quantity" type="number" placeholder="e.g. 1000" required>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center;margin-top:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:160px;">
+          <label>Charge</label>
+          <input id="charge" type="text" placeholder="$0.00" readonly>
+        </div>
+        <button class="submit-order" type="submit">Submit</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- UPDATES -->
+  <section class="updates" aria-labelledby="updatesTitle">
+    <h3 id="updatesTitle">Updates</h3>
+    <p><strong>Hello BestSMMProvider Fam.</strong> We've been working behind the scenes. Join our Telegram & Whatsapp Channels to get the latest service updates and categories. Important: Disable "Flag for review" on Instagram before ordering.</p>
+    <p style="margin-top:8px;font-weight:700">New Category: <br/>Instagram Followers | 7-15 Days Refill, 30 Days Refill, 365 Days Refill, Lifetime Refill</p>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" aria-label="Quick stats">
+    <!-- Example: you can dynamically set these values via JS/PHP -->
+    <div class="stat">
+      <div class="icon">☰</div>
+      <div class="meta">
+        <!-- PHP example: <?php echo htmlspecialchars($_SESSION['username'] ?? 'guest'); ?> -->
+        <h4 id="statUser">rasanipu2008</h4>
+        <p>Welcome to BestSmmProvider!</p>
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="icon">💸</div>
+      <div class="meta">
+        <h4 id="statSpent">$44.824394</h4>
+        <p>Spent Balance</p>
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="icon">👥</div>
+      <div class="meta">
+        <h4 id="statOrders">25,042,995</h4>
+        <p>BestSmmProvider Orders</p>
+      </div>
+    </div>
+
+    <div class="stat">
+      <div class="icon">🪙</div>
+      <div class="meta">
+        <h4 id="statBal">$1.375606</h4>
+        <p>Account Balance</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM AREA for more content -->
+  <section class="bottom-grid">
+    <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow)">
+      <h4 style="margin:0 0 8px 0">Support</h4>
+      <p style="margin:0;color:var(--muted)">Need help? Contact us on Telegram / WhatsApp or open a ticket.</p>
+    </div>
+
+    <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow)">
+      <h4 style="margin:0 0 8px 0">Recent News</h4>
+      <p style="margin:0;color:var(--muted)">We added new Instagram refill types and a special TikTok category.</p>
+    </div>
+  </section>
+</main>
+
+<!-- floating chat -->
+<a class="chat" href="https://wa.me/947XXXXXXXX" target="_blank" aria-label="WhatsApp">
+  ✉
+</a>
+
+<script>
+  // Demo: Calculate charge simple (example price per 1000 = $0.5)
+  const servicePrices = { '3402': 0.5/1000, '2001': 0.2/1000, '4501': 0.6/1000 };
+  const serviceEl = document.getElementById('service');
+  const qtyEl = document.getElementById('quantity');
+  const chargeEl = document.getElementById('charge');
+
+  function calcCharge(){
+    const svc = serviceEl.value;
+    const qty = Number(qtyEl.value)||0;
+    const pricePerUnit = servicePrices[svc] || 0.001;
+    const total = (pricePerUnit * qty).toFixed(6);
+    chargeEl.value = total ? '$' + total : '$0.00';
+  }
+  serviceEl.addEventListener('change', calcCharge);
+  qtyEl.addEventListener('input', calcCharge);
+
+  // Simulate order submit -> call backend API via fetch (example)
+  function submitOrder(e){
+    e.preventDefault();
+    const data = {
+      service: serviceEl.value,
+      link: document.getElementById('link').value,
+      quantity: qtyEl.value
+    };
+    // Basic validation
+    if(!data.link || !data.quantity){ alert('Please enter link and quantity'); return; }
+    // Show loading
+    const btn = document.querySelector('.submit-order');
+    btn.disabled = true; btn.textContent = 'Placing order...';
+    // Example POST to your services.php endpoint (must support CORS if origin differs)
+    fetch('/backend/services.php', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ key: '0e06df2c68e992b2500088e621a3cb0a', action:'add', service:data.service, link:data.link, quantity:data.quantity })
+    }).then(r=>r.text()).then(txt=>{
+      // try parse JSON
+      try{
+        const j = JSON.parse(txt);
+        if(j.order){
+          alert('Order placed: ' + j.order);
+          // optionally redirect to order-success
+        } else {
+          alert('Response: ' + txt);
+        }
+      }catch(err){
+        alert('Server response: ' + txt);
+      }
+    }).catch(err=>{
+      console.error(err);
+      alert('Network error or backend not configured.');
+    }).finally(()=>{
+      btn.disabled = false; btn.textContent = 'Submit';
+    });
+    return false;
+  }
+
+  // Optionally load dynamic user data via API on page load (example)
+  window.addEventListener('DOMContentLoaded', function(){
+    // Example: If you have session-backed endpoint /api/me that returns JSON {username, spent, orders, balance}
+    // fetch('/api/me').then(r=>r.json()).then(j => {
+    //   document.getElementById('statUser').textContent = j.username || 'guest';
+    //   document.getElementById('statSpent').textContent = '$' + (j.spent || '0.00');
+    //   document.getElementById('statOrders').textContent = j.orders || '0';
+    //   document.getElementById('statBal').textContent = '$' + (j.balance || '0.00');
+    //   document.getElementById('balSmall').textContent = '$' + (j.balance || '0.00');
+    // });
+  });
+</script>
 </body>
 </html>
