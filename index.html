@@ -1,296 +1,274 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NOVA — Dashboard / Order</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>NOVA — Home / Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f2f6fb;
+    --bg:#f3f6fa;
     --panel:#ffffff;
-    --accent:#0b4d8c;
-    --muted:#6b7280;
-    --card-radius:14px;
-    --shadow: 0 10px 30px rgba(19,38,63,0.06);
+    --muted:#98a0b3;
+    --accent1:#23b0ff;
+    --accent2:#b64bff;
+    --card-radius:16px;
+    --shadow: 0 14px 30px rgba(8,18,38,0.08);
   }
   *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
-    background:var(--bg);
-    color:#0f1724;
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#0b1b2b;-webkit-font-smoothing:antialiased}
+  /* top header */
+  header.top{
+    display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid rgba(11,27,45,0.05);
   }
+  .brand {display:flex;align-items:center;gap:12px}
+  .brand img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:#000}
+  .brand h1{margin:0;font-size:16px;font-weight:800;color:#0b2233}
+  .hamb{font-size:22px;opacity:.7}
 
-  /* topbar */
-  header.topbar{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:12px 14px;background:#fff;border-bottom:1px solid rgba(15,23,42,0.04);
+  /* container */
+  .wrap{max-width:920px;margin:12px auto;padding:0 14px 80px}
+
+  /* hero banner */
+  .banner{
+    background:linear-gradient(180deg,#4cc6ff,#35b08c);
+    color:#fff;border-radius:12px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:12px;
+    box-shadow:0 10px 30px rgba(27,108,141,0.12);
   }
-  .brand { font-weight:700; color:#6b1010; }
-  .menu { font-size:20px; opacity:.7 }
+  .banner h2{margin:0;font-size:20px;text-align:center;font-weight:800}
+  .banner p{margin:0;opacity:.95}
 
-  .wrap{max-width:420px;margin:12px auto;padding:0 12px 60px}
+  .banner .cta{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
+  .btn-outline{background:#fff;color:#0b89b4}
+  .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021b2b}
 
-  /* cards */
-  .card{
-    background:var(--panel);
-    border-radius:var(--card-radius);
-    padding:14px;
-    box-shadow:var(--shadow);
-    margin-bottom:14px;
+  /* order card */
+  .order-card{margin-top:16px;background:var(--panel);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
+  .order-title{font-weight:800;margin:0 0 8px 0}
+  .smallmuted{color:var(--muted);font-size:13px;margin-bottom:8px}
+
+  .form-row{display:flex;gap:10px;flex-wrap:wrap}
+  .field{flex:1 1 180px;min-width:160px}
+  label{display:block;font-weight:700;margin-bottom:8px;color:#122433}
+  select,input,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #e6eef8;background:#fbfdff;font-size:14px;outline:none}
+
+  .desc-box{margin-top:12px;padding:12px;border-radius:10px;background:#fbfdff;border:1px solid rgba(0,0,0,0.03);color:#334155;font-size:13px;line-height:1.45}
+
+  .charge-row{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+  .charge{flex:1;background:linear-gradient(90deg,#f0fbff,#fff4ff);padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.03);display:flex;justify-content:space-between;align-items:center}
+  .submit-btn{padding:12px;border-radius:12px;border:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021;font-weight:900;width:220px;cursor:pointer}
+
+  /* stats cards list (vertical) */
+  .stats-list{margin-top:18px;display:flex;flex-direction:column;gap:14px}
+  .stat-card{display:flex;gap:12px;align-items:center;background:var(--panel);padding:14px;border-radius:18px;box-shadow:var(--shadow)}
+  .stat-icon{width:78px;height:78px;border-radius:12px;background:linear-gradient(180deg,#f3e9fb,#f6f2ff);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .stat-meta h3{margin:0;font-size:20px;font-weight:800}
+  .stat-meta p{margin:6px 0 0 0;color:var(--muted)}
+
+  /* floating chat button style (sample) */
+  .chat{position:fixed;left:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:linear-gradient(90deg,#b64bff,#6ad0ff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;box-shadow:0 10px 30px rgba(14,21,50,0.2);z-index:60}
+
+  /* small helper */
+  .card-title{font-weight:800;margin-bottom:6px}
+
+  @media (max-width:720px){
+    .brand h1{font-size:15px}
+    .stat-icon{width:68px;height:68px}
+    .submit-btn{width:100%}
   }
-  .user-card{display:flex;gap:12px;align-items:center}
-  .user-img{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#247BFD,#B624FE);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
-  .user-meta h3{margin:0;font-size:16px}
-  .user-meta p{margin:4px 0 0 0;color:var(--muted);font-size:13px}
-
-  .balance{display:flex;gap:12px;align-items:center;justify-content:space-between}
-  .bal-left{display:flex;gap:12px;align-items:center}
-  .bal-icon{width:48px;height:48px;border-radius:10px;background:linear-gradient(180deg,#e9f8ff,#e9ecff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0a3b5e}
-  .bal-amt{font-weight:800;font-size:18px}
-  .bal-text{color:var(--muted);font-size:13px}
-
-  /* order form */
-  form .field{margin-top:12px}
-  label{display:block;font-weight:600;margin-bottom:8px}
-  select,input,textarea{
-    width:100%;padding:12px;border-radius:10px;border:1px solid rgba(10,20,30,0.06);
-    background:#fbfdff;font-size:14px;outline:none;
-  }
-  textarea{min-height:110px;resize:vertical}
-
-  .desc{background:#fbfdff;border-radius:10px;padding:12px;border:1px solid rgba(10,20,30,0.04);color:#223}
-  .info-small{font-size:13px;color:var(--muted);margin-top:8px}
-
-  .row{display:flex;gap:10px;align-items:center}
-  .col{flex:1}
-
-  .charge-box{margin-top:10px;padding:10px;border-radius:10px;background:linear-gradient(90deg,#eef7ff,#fbf0ff);border:1px solid rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center}
-  .charge-box b{font-size:16px}
-
-  .submit-btn{margin-top:14px;padding:12px;border-radius:10px;border:0;background:linear-gradient(90deg,#2b7bff,#b344ff);color:#fff;font-weight:800;width:100%}
-
-  /* services details big text */
-  .details{font-size:13px;color:#243;color:var(--muted);line-height:1.45;margin-top:10px}
-
-  /* floating whatsapp */
-  .wa {
-    position:fixed;right:14px;bottom:14px;width:56px;height:56px;border-radius:50%;
-    background:linear-gradient(90deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);z-index:120;color:#fff;font-weight:700;
-  }
-
-  /* responsive tweaks */
   @media (max-width:420px){
-    .wrap{padding:0 10px 80px}
-    .user-img{width:60px;height:60px}
+    .banner h2{font-size:18px}
+    .brand img{width:44px;height:44px}
+    .stat-icon{width:60px;height:60px}
   }
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="brand">SL Social Main Provider</div>
-  <div class="menu">☰</div>
+<header class="top" role="banner">
+  <div class="brand">
+    <img src="https://files.catbox.moe/ucpygr.jpg" alt="NOVA Logo">
+    <h1>NOVA SMM PROVIDER</h1>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <div class="hamb" title="Menu">☰</div>
+  </div>
 </header>
 
-<main class="wrap">
-  <!-- USER + BALANCE -->
-  <section class="card user-card" aria-label="user">
-    <div class="user-img">N</div>
-    <div class="user-meta">
-      <!-- Replace with PHP session username -->
-      <h3 id="username">Nipun</h3>
-      <p>Welcome to SL MAIN PROVIDER!</p>
+<main class="wrap" role="main">
+  <!-- HERO / CTA -->
+  <section class="banner" aria-labelledby="heroTitle">
+    <h2 id="heroTitle">Join us on our Telegram & Whatsapp Channels!</h2>
+    <p>Now it's time to connect. Stay updated with new services and offers.</p>
+    <div class="cta">
+      <button class="btn btn-outline" onclick="window.open('#','_blank')">JOIN TELEGRAM</button>
+      <button class="btn btn-primary" onclick="window.open('#','_blank')">JOIN WHATSAPP</button>
     </div>
-  </section>
-
-  <section class="card balance">
-    <div class="bal-left">
-      <div class="bal-icon">Rs</div>
-      <div>
-        <div class="bal-amt" id="accBalance">≈ 0.5813 Rs</div>
-        <div class="bal-text">Account balance</div>
-      </div>
-    </div>
-    <div style="min-width:60px;text-align:right;color:var(--muted);font-size:13px">Top up</div>
   </section>
 
   <!-- ORDER FORM -->
-  <section class="card" aria-labelledby="order">
+  <section class="order-card" aria-labelledby="orderTitle">
     <div style="display:flex;justify-content:space-between;align-items:center">
-      <div style="font-weight:800">Place Order</div>
-      <div style="color:var(--muted);font-size:13px">Search by Service ID or name</div>
+      <div>
+        <div class="order-title" id="orderTitle">Quick Order</div>
+        <div class="smallmuted">Search services or select from categories</div>
+      </div>
+      <div style="color:var(--muted);font-size:13px">Balance: <strong id="balTop">$1.375606</strong></div>
     </div>
 
-    <form id="orderForm" action="https://yourdomain.com/backend/services.php" method="POST" onsubmit="return placeOrder(event)">
-      <!-- if using server-side add hidden key / session -->
+    <!-- change action to your backend services.php when ready -->
+    <form id="orderForm" action="/backend/services.php" method="POST" onsubmit="return submitOrder(event)">
       <input type="hidden" name="key" value="0e06df2c68e992b2500088e621a3cb0a">
 
-      <div class="field">
-        <label for="category">Category</label>
-        <select id="category" name="category">
-          <option>Instagram</option>
-          <option>TikTok</option>
-          <option>YouTube</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="service">Service</label>
-        <select id="service" name="service">
-          <option value="2343">2343 — TikTok Likes [ Max 5M ]</option>
-          <option value="3402">3402 — Instagram Followers</option>
-          <option value="2001">2001 — Instagram Likes</option>
-        </select>
-      </div>
-
-      <div class="field desc">
-        <div style="font-weight:700">Description</div>
-        <div style="margin-top:8px;font-size:13px;color:#334155">
-          - Location: Global<br>
-          - Quality: HQ & Real Profiles<br>
-          - Start Time: 0-5 Minutes<br>
-          - Speed: Day 200K<br>
-          - Refill Time: Lifetime ♻️<br>
-          - Cancel Button: Active ✅<br>
-          - Example Link: https://vt.tiktok.com/example
+      <div class="form-row" style="margin-top:12px">
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option>BestSmmProvider Recommended</option>
+            <option>Instagram</option>
+            <option>TikTok</option>
+            <option>YouTube</option>
+          </select>
         </div>
-        <div class="info-small">Notes: Do not place the second order on same link until first completes.</div>
+
+        <div class="field">
+          <label for="service">Service</label>
+          <select id="service" name="service">
+            <option value="3402">3402 — Instagram Followers</option>
+            <option value="2001">2001 — Instagram Likes</option>
+            <option value="4501">4501 — TikTok Followers</option>
+          </select>
+        </div>
       </div>
 
-      <div class="field">
-        <label>Average time</label>
-        <input type="text" id="avgTime" value="1 hour 1 minute" readonly>
-      </div>
+      <div class="form-row" style="margin-top:12px">
+        <div class="field">
+          <label for="link">Link</label>
+          <input id="link" name="link" type="text" placeholder="Profile or post link" required>
+        </div>
 
-      <div class="field">
-        <label for="link">Link</label>
-        <input id="link" name="link" type="text" placeholder="Profile / Post link" required>
-      </div>
-
-      <div class="row">
-        <div class="col field">
+        <div class="field">
           <label for="quantity">Quantity</label>
-          <input id="quantity" name="quantity" type="number" placeholder="e.g. 1000" min="1" required>
-        </div>
-        <div class="col field">
-          <label>Min: 5 - Max: 5000000</label>
-          <input readonly style="background:#fff0;border:0;padding:12px;border-radius:10px" value="">
+          <input id="quantity" name="quantity" type="number" placeholder="e.g. 1000" required min="1">
         </div>
       </div>
 
-      <div class="charge-box" aria-hidden="true">
-        <div>Charge</div>
-        <div><b id="chargeVal">≈ 35.34 Rs</b></div>
+      <div class="desc-box" aria-hidden="true">
+        <strong>Notes:</strong><br>
+        - Location: Global · Quality: HQ & Real Profiles<br>
+        - Start Time: 0-5 Minutes · Speed: Day 200K · Refill: Lifetime<br>
+        - Example Link: https://vt.tiktok.com/example<br>
+        <small style="color:var(--muted)">Do not place second order on same link until first completes.</small>
       </div>
 
-      <button class="submit-btn" type="submit">Submit</button>
+      <div class="charge-row">
+        <div class="charge"><div>Charge</div><div id="chargeVal">≈ $0.00</div></div>
+        <button class="submit-btn" type="submit">Submit</button>
+      </div>
     </form>
   </section>
 
-  <!-- SERVICES DETAILS -->
-  <section class="card">
-    <div style="font-weight:800">SERVICES DETAILS</div>
-    <div class="details">
-      What R30,R60,R90,R∞ means?<br>
-      -> R means Refill and the numbers showing as date, ex: R30(30 Days Refill) and ♾ this is infinity symbol it means Lifetime.<br><br>
-
-      What LD,ND,NR,CB,RB means?<br>
-      -> LD : Low Drop , ND : Non Drop , NR : No Refill , CB : Cancel Button Active , RB : Refill Button Active<br><br>
-
-      What HQ,LQ,MQ means?<br>
-      -> HQ : High Quality , LQ : Low Quality , MQ : Medium Quality<br><br>
-
-      ⚠ WARNINGS: Don't make multiple orders at same time or don't use multiple website at same time. Wait for previous order complete then make new order.
-    </div>
+  <!-- UPDATES / INFO -->
+  <section style="margin-top:18px;background:var(--panel);border-radius:14px;padding:16px;box-shadow:var(--shadow)">
+    <h3 style="margin:0 0 8px 0;font-weight:800">UPDATES</h3>
+    <p style="margin:0;color:var(--muted);line-height:1.5">Important: Disable "Flag for review" on Instagram before ordering, otherwise followers may be flagged. New categories: Instagram Followers refills, special TikTok category and more.</p>
   </section>
 
-  <!-- small stats cards -->
-  <section class="card" style="padding:12px;">
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <div style="flex:1;min-width:160px;background:#fff;border-radius:10px;padding:12px;box-shadow:var(--shadow);">
-        <div style="font-weight:800" id="statUser">rasanipu2008</div>
-        <div style="color:var(--muted);font-size:13px">Welcome to BestSmmProvider!</div>
+  <!-- STATS LIST (cards in order as screenshots) -->
+  <section class="stats-list" aria-label="Stats">
+    <div class="stat-card">
+      <div class="stat-icon" aria-hidden="true">☰</div>
+      <div class="stat-meta">
+        <h3 id="userName">rasanipu2008</h3>
+        <p>Welcome to BestSmmProvider!</p>
       </div>
+    </div>
 
-      <div style="flex:1;min-width:160px;background:#fff;border-radius:10px;padding:12px;box-shadow:var(--shadow);">
-        <div style="font-weight:800" id="statSpent">$44.824394</div>
-        <div style="color:var(--muted);font-size:13px">Spent Balance</div>
+    <div class="stat-card">
+      <div class="stat-icon" aria-hidden="true">📋</div>
+      <div class="stat-meta">
+        <h3 id="spentBal">$44.824394</h3>
+        <p>Spent Balance</p>
       </div>
+    </div>
 
-      <div style="flex:1;min-width:160px;background:#fff;border-radius:10px;padding:12px;box-shadow:var(--shadow);">
-        <div style="font-weight:800" id="statOrders">25042995</div>
-        <div style="color:var(--muted);font-size:13px">BestSmmProvider Orders</div>
+    <div class="stat-card">
+      <div class="stat-icon" aria-hidden="true">👥</div>
+      <div class="stat-meta">
+        <h3 id="totalOrders">25043177</h3>
+        <p>BestSmmProvider Orders</p>
       </div>
+    </div>
 
-      <div style="flex:1;min-width:160px;background:#fff;border-radius:10px;padding:12px;box-shadow:var(--shadow);">
-        <div style="font-weight:800" id="statBal">$1.375606</div>
-        <div style="color:var(--muted);font-size:13px">Account Balance</div>
+    <div class="stat-card">
+      <div class="stat-icon" aria-hidden="true">🪙</div>
+      <div class="stat-meta">
+        <h3 id="accBal">$1.375606</h3>
+        <p>Account Balance</p>
       </div>
     </div>
   </section>
 
 </main>
 
-<a class="wa" href="https://wa.me/947XXXXXXXX" target="_blank" aria-label="WhatsApp">💬</a>
+<!-- floating chat -->
+<a class="chat" href="https://wa.me/947XXXXXXXX" target="_blank" aria-label="WhatsApp">💬</a>
 
 <script>
-  // sample price map (per unit price in Rs for demo) — replace with real price logic
-  const pricePerUnit = { '2343': 0.03534, '3402': 0.025, '2001': 0.02 };
+  // sample price per unit map (demo)
+  const unitPrices = { '3402': 0.0005, '2001': 0.0002, '4501': 0.0006 };
 
   function calcCharge(){
     const svc = document.getElementById('service').value;
     const qty = Number(document.getElementById('quantity').value) || 0;
-    const price = pricePerUnit[svc] || 0.03;
-    const total = (price * qty).toFixed(6);
-    document.getElementById('chargeVal').textContent = total ? '≈ ' + total + ' Rs' : '≈ 0.00 Rs';
+    const perUnit = unitPrices[svc] || 0.0005;
+    const total = (perUnit * qty).toFixed(6);
+    document.getElementById('chargeVal').textContent = total ? '≈ $' + total : '≈ $0.00';
   }
 
   document.getElementById('service').addEventListener('change', calcCharge);
   document.getElementById('quantity').addEventListener('input', calcCharge);
 
-  // Place order -> demo post, replace action attribute for live server
-  function placeOrder(e){
+  // demo submit -> posts to services.php; change action to your full path if needed
+  function submitOrder(e){
     e.preventDefault();
     const link = document.getElementById('link').value.trim();
     const qty = document.getElementById('quantity').value;
     const svc = document.getElementById('service').value;
-    if(!link || !qty){ alert('Please add link and quantity'); return false; }
+    if(!link || !qty){ alert('Please enter link and quantity'); return false; }
 
-    // show loading
     const btn = document.querySelector('.submit-btn');
     btn.disabled = true; btn.textContent = 'Placing order...';
 
-    // sample fetch to backend — change URL if needed
+    // sample POST (uses same-origin). If backend on different domain, use full URL and set CORS on server.
     fetch(document.getElementById('orderForm').action, {
       method:'POST',
       headers:{ 'Content-Type':'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ key:'0e06df2c68e992b2500088e621a3cb0a', action:'add', service:svc, link:link, quantity:qty })
+      body: new URLSearchParams({ key: document.querySelector('input[name="key"]').value, action:'add', service: svc, link: link, quantity: qty })
     }).then(r=>r.text()).then(txt=>{
       try{
-        const j = JSON.parse(txt);
-        if(j.order){
-          alert('Order placed: ' + j.order);
+        const json = JSON.parse(txt);
+        if(json.order){
+          alert('Order placed: ' + json.order);
           window.location.href = 'order-success.html';
         } else {
-          alert('Server response: ' + txt);
+          alert('Response: ' + txt);
         }
       }catch(err){
         alert('Server response: ' + txt);
       }
     }).catch(err=>{
       console.error(err);
-      alert('Network error');
+      alert('Network error or backend not configured.');
     }).finally(()=>{ btn.disabled=false; btn.textContent='Submit'; });
 
     return false;
   }
 
-  // optional: load dynamic user data via API
-  // fetch('/api/me').then(r=>r.json()).then(j=>{ document.getElementById('username').textContent=j.username; document.getElementById('accBalance').textContent='≈ '+j.balance+' Rs'; })
-</script>
+  // Optionally load dynamic data via API (example)
+  // fetch('/api/me').then(r=>r.json()).then(j=>{ document.getElementById('userName').textContent=j.username; document.getElementById('accBal').textContent='$'+j.balance; document.getElementById('spentBal').textContent='$'+j.spent; document.getElementById('totalOrders').textContent=j.totalOrders; document.getElementById('balTop').textContent='$'+j.balance; });
 
+</script>
 </body>
 </html>
