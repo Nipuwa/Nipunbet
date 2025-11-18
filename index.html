@@ -1,274 +1,239 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NOVA — Home / Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA SMM PROVIDER</title>
+
 <style>
-  :root{
-    --bg:#f3f6fa;
-    --panel:#ffffff;
-    --muted:#98a0b3;
-    --accent1:#23b0ff;
-    --accent2:#b64bff;
-    --card-radius:16px;
-    --shadow: 0 14px 30px rgba(8,18,38,0.08);
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#0b1b2b;-webkit-font-smoothing:antialiased}
-  /* top header */
-  header.top{
-    display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid rgba(11,27,45,0.05);
-  }
-  .brand {display:flex;align-items:center;gap:12px}
-  .brand img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:#000}
-  .brand h1{margin:0;font-size:16px;font-weight:800;color:#0b2233}
-  .hamb{font-size:22px;opacity:.7}
 
-  /* container */
-  .wrap{max-width:920px;margin:12px auto;padding:0 14px 80px}
+/* ===== RESET ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
 
-  /* hero banner */
-  .banner{
-    background:linear-gradient(180deg,#4cc6ff,#35b08c);
-    color:#fff;border-radius:12px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:12px;
-    box-shadow:0 10px 30px rgba(27,108,141,0.12);
-  }
-  .banner h2{margin:0;font-size:20px;text-align:center;font-weight:800}
-  .banner p{margin:0;opacity:.95}
+/* ===== HEADER ===== */
+header {
+    width: 100%;
+    padding: 13px 15px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-  .banner .cta{display:flex;gap:10px;flex-wrap:wrap}
-  .btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
-  .btn-outline{background:#fff;color:#0b89b4}
-  .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021b2b}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-  /* order card */
-  .order-card{margin-top:16px;background:var(--panel);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
-  .order-title{font-weight:800;margin:0 0 8px 0}
-  .smallmuted{color:var(--muted);font-size:13px;margin-bottom:8px}
+.brand img {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    object-fit: cover;
+    background: #000;
+}
 
-  .form-row{display:flex;gap:10px;flex-wrap:wrap}
-  .field{flex:1 1 180px;min-width:160px}
-  label{display:block;font-weight:700;margin-bottom:8px;color:#122433}
-  select,input,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #e6eef8;background:#fbfdff;font-size:14px;outline:none}
+.brand h1 {
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0;
+}
 
-  .desc-box{margin-top:12px;padding:12px;border-radius:10px;background:#fbfdff;border:1px solid rgba(0,0,0,0.03);color:#334155;font-size:13px;line-height:1.45}
+.menu-btn {
+    font-size: 32px;
+    cursor: pointer;
+}
 
-  .charge-row{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
-  .charge{flex:1;background:linear-gradient(90deg,#f0fbff,#fff4ff);padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.03);display:flex;justify-content:space-between;align-items:center}
-  .submit-btn{padding:12px;border-radius:12px;border:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021;font-weight:900;width:220px;cursor:pointer}
+/* ===== SIDE MENU ===== */
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #0f172a;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 70px;
+    z-index: 9999;
+}
 
-  /* stats cards list (vertical) */
-  .stats-list{margin-top:18px;display:flex;flex-direction:column;gap:14px}
-  .stat-card{display:flex;gap:12px;align-items:center;background:var(--panel);padding:14px;border-radius:18px;box-shadow:var(--shadow)}
-  .stat-icon{width:78px;height:78px;border-radius:12px;background:linear-gradient(180deg,#f3e9fb,#f6f2ff);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .stat-meta h3{margin:0;font-size:20px;font-weight:800}
-  .stat-meta p{margin:6px 0 0 0;color:var(--muted)}
+.side-menu a {
+    padding: 18px 25px;
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    border-bottom: 1px solid #ffffff22;
+}
 
-  /* floating chat button style (sample) */
-  .chat{position:fixed;left:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:linear-gradient(90deg,#b64bff,#6ad0ff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;box-shadow:0 10px 30px rgba(14,21,50,0.2);z-index:60}
+.side-menu a:hover {
+    background: #1e293b;
+}
 
-  /* small helper */
-  .card-title{font-weight:800;margin-bottom:6px}
+/* ===== BANNER ===== */
+.banner {
+    width: 90%;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #3bb0ff, #4cc79a);
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+}
 
-  @media (max-width:720px){
-    .brand h1{font-size:15px}
-    .stat-icon{width:68px;height:68px}
-    .submit-btn{width:100%}
-  }
-  @media (max-width:420px){
-    .banner h2{font-size:18px}
-    .brand img{width:44px;height:44px}
-    .stat-icon{width:60px;height:60px}
-  }
+.banner h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.banner p {
+    opacity: 0.9;
+    margin-bottom: 18px;
+}
+
+.banner button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.banner .telegram {
+    background: white;
+    color: #0059ff;
+}
+
+.banner .whatsapp {
+    background: linear-gradient(90deg, #00ff88, #006aff);
+    color: #ffffff;
+}
+
+/* ===== QUICK ORDER BOX ===== */
+
+.box {
+    width: 90%;
+    background: white;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.box h3 {
+    margin: 0 0 15px;
+    font-size: 20px;
+}
+
+.label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: #0056ff;
+    border: none;
+    color: white;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #003ccc;
+}
+
 </style>
+
 </head>
 <body>
 
-<header class="top" role="banner">
-  <div class="brand">
-    <img src="https://files.catbox.moe/ucpygr.jpg" alt="NOVA Logo">
-    <h1>NOVA SMM PROVIDER</h1>
-  </div>
-  <div style="display:flex;gap:10px;align-items:center">
-    <div class="hamb" title="Menu">☰</div>
-  </div>
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="brand">
+        <img src="https://files.catbox.moe/ucpygr.jpg">
+        <h1>NOVA SMM PROVIDER</h1>
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
 
-<main class="wrap" role="main">
-  <!-- HERO / CTA -->
-  <section class="banner" aria-labelledby="heroTitle">
-    <h2 id="heroTitle">Join us on our Telegram & Whatsapp Channels!</h2>
-    <p>Now it's time to connect. Stay updated with new services and offers.</p>
-    <div class="cta">
-      <button class="btn btn-outline" onclick="window.open('#','_blank')">JOIN TELEGRAM</button>
-      <button class="btn btn-primary" onclick="window.open('#','_blank')">JOIN WHATSAPP</button>
-    </div>
-  </section>
+<!-- ===== SIDE MENU ===== -->
+<div id="sideMenu" class="side-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="order.html">🛒 New Order</a>
+    <a href="services.html">📦 Services</a>
+    <a href="orders.html">📋 My Orders</a>
+    <a href="refill.html">♻ Refill</a>
+    <a href="funds.html">💰 Add Funds</a>
+    <a href="api.html">🔧 API</a>
+    <a href="child.html">👶 Child Panel</a>
+    <a href="updates.html">📢 Updates</a>
+    <a href="account.html">⚙ Account</a>
+    <a href="logout.php">🚪 Logout</a>
+</div>
 
-  <!-- ORDER FORM -->
-  <section class="order-card" aria-labelledby="orderTitle">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div class="order-title" id="orderTitle">Quick Order</div>
-        <div class="smallmuted">Search services or select from categories</div>
-      </div>
-      <div style="color:var(--muted);font-size:13px">Balance: <strong id="balTop">$1.375606</strong></div>
-    </div>
+<!-- ===== BANNER ===== -->
+<div class="banner">
+    <h2>Join us on our Telegram & WhatsApp Channels!</h2>
+    <p>Stay updated with new offers & services.</p>
 
-    <!-- change action to your backend services.php when ready -->
-    <form id="orderForm" action="/backend/services.php" method="POST" onsubmit="return submitOrder(event)">
-      <input type="hidden" name="key" value="0e06df2c68e992b2500088e621a3cb0a">
+    <button class="telegram">JOIN TELEGRAM</button>
+    <button class="whatsapp">JOIN WHATSAPP</button>
+</div>
 
-      <div class="form-row" style="margin-top:12px">
-        <div class="field">
-          <label for="category">Category</label>
-          <select id="category" name="category">
-            <option>BestSmmProvider Recommended</option>
-            <option>Instagram</option>
-            <option>TikTok</option>
-            <option>YouTube</option>
-          </select>
-        </div>
+<!-- ===== QUICK ORDER ===== -->
+<div class="box">
 
-        <div class="field">
-          <label for="service">Service</label>
-          <select id="service" name="service">
-            <option value="3402">3402 — Instagram Followers</option>
-            <option value="2001">2001 — Instagram Likes</option>
-            <option value="4501">4501 — TikTok Followers</option>
-          </select>
-        </div>
-      </div>
+    <h3>Quick Order</h3>
 
-      <div class="form-row" style="margin-top:12px">
-        <div class="field">
-          <label for="link">Link</label>
-          <input id="link" name="link" type="text" placeholder="Profile or post link" required>
-        </div>
+    <div class="label">Category</div>
+    <select>
+        <option>NovaSmmProvider Recommended</option>
+    </select>
 
-        <div class="field">
-          <label for="quantity">Quantity</label>
-          <input id="quantity" name="quantity" type="number" placeholder="e.g. 1000" required min="1">
-        </div>
-      </div>
+    <div class="label">Service</div>
+    <select>
+        <option>3402 — Instagram Followers</option>
+    </select>
 
-      <div class="desc-box" aria-hidden="true">
-        <strong>Notes:</strong><br>
-        - Location: Global · Quality: HQ & Real Profiles<br>
-        - Start Time: 0-5 Minutes · Speed: Day 200K · Refill: Lifetime<br>
-        - Example Link: https://vt.tiktok.com/example<br>
-        <small style="color:var(--muted)">Do not place second order on same link until first completes.</small>
-      </div>
+    <div class="label">Link</div>
+    <input type="text" placeholder="Profile or post link">
 
-      <div class="charge-row">
-        <div class="charge"><div>Charge</div><div id="chargeVal">≈ $0.00</div></div>
-        <button class="submit-btn" type="submit">Submit</button>
-      </div>
-    </form>
-  </section>
+    <div class="label">Quantity</div>
+    <input type="number" placeholder="Min 50 — Max 50000">
 
-  <!-- UPDATES / INFO -->
-  <section style="margin-top:18px;background:var(--panel);border-radius:14px;padding:16px;box-shadow:var(--shadow)">
-    <h3 style="margin:0 0 8px 0;font-weight:800">UPDATES</h3>
-    <p style="margin:0;color:var(--muted);line-height:1.5">Important: Disable "Flag for review" on Instagram before ordering, otherwise followers may be flagged. New categories: Instagram Followers refills, special TikTok category and more.</p>
-  </section>
+    <button class="submit-btn">Submit</button>
 
-  <!-- STATS LIST (cards in order as screenshots) -->
-  <section class="stats-list" aria-label="Stats">
-    <div class="stat-card">
-      <div class="stat-icon" aria-hidden="true">☰</div>
-      <div class="stat-meta">
-        <h3 id="userName">rasanipu2008</h3>
-        <p>Welcome to BestSmmProvider!</p>
-      </div>
-    </div>
+</div>
 
-    <div class="stat-card">
-      <div class="stat-icon" aria-hidden="true">📋</div>
-      <div class="stat-meta">
-        <h3 id="spentBal">$44.824394</h3>
-        <p>Spent Balance</p>
-      </div>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon" aria-hidden="true">👥</div>
-      <div class="stat-meta">
-        <h3 id="totalOrders">25043177</h3>
-        <p>BestSmmProvider Orders</p>
-      </div>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon" aria-hidden="true">🪙</div>
-      <div class="stat-meta">
-        <h3 id="accBal">$1.375606</h3>
-        <p>Account Balance</p>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- floating chat -->
-<a class="chat" href="https://wa.me/947XXXXXXXX" target="_blank" aria-label="WhatsApp">💬</a>
-
+<!-- ===== MENU SCRIPT ===== -->
 <script>
-  // sample price per unit map (demo)
-  const unitPrices = { '3402': 0.0005, '2001': 0.0002, '4501': 0.0006 };
-
-  function calcCharge(){
-    const svc = document.getElementById('service').value;
-    const qty = Number(document.getElementById('quantity').value) || 0;
-    const perUnit = unitPrices[svc] || 0.0005;
-    const total = (perUnit * qty).toFixed(6);
-    document.getElementById('chargeVal').textContent = total ? '≈ $' + total : '≈ $0.00';
-  }
-
-  document.getElementById('service').addEventListener('change', calcCharge);
-  document.getElementById('quantity').addEventListener('input', calcCharge);
-
-  // demo submit -> posts to services.php; change action to your full path if needed
-  function submitOrder(e){
-    e.preventDefault();
-    const link = document.getElementById('link').value.trim();
-    const qty = document.getElementById('quantity').value;
-    const svc = document.getElementById('service').value;
-    if(!link || !qty){ alert('Please enter link and quantity'); return false; }
-
-    const btn = document.querySelector('.submit-btn');
-    btn.disabled = true; btn.textContent = 'Placing order...';
-
-    // sample POST (uses same-origin). If backend on different domain, use full URL and set CORS on server.
-    fetch(document.getElementById('orderForm').action, {
-      method:'POST',
-      headers:{ 'Content-Type':'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ key: document.querySelector('input[name="key"]').value, action:'add', service: svc, link: link, quantity: qty })
-    }).then(r=>r.text()).then(txt=>{
-      try{
-        const json = JSON.parse(txt);
-        if(json.order){
-          alert('Order placed: ' + json.order);
-          window.location.href = 'order-success.html';
-        } else {
-          alert('Response: ' + txt);
-        }
-      }catch(err){
-        alert('Server response: ' + txt);
-      }
-    }).catch(err=>{
-      console.error(err);
-      alert('Network error or backend not configured.');
-    }).finally(()=>{ btn.disabled=false; btn.textContent='Submit'; });
-
-    return false;
-  }
-
-  // Optionally load dynamic data via API (example)
-  // fetch('/api/me').then(r=>r.json()).then(j=>{ document.getElementById('userName').textContent=j.username; document.getElementById('accBal').textContent='$'+j.balance; document.getElementById('spentBal').textContent='$'+j.spent; document.getElementById('totalOrders').textContent=j.totalOrders; document.getElementById('balTop').textContent='$'+j.balance; });
-
+function toggleMenu(){
+    let menu = document.getElementById("sideMenu");
+    menu.style.width = (menu.style.width === "260px") ? "0" : "260px";
+}
 </script>
+
 </body>
 </html>
