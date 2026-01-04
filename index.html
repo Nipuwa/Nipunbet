@@ -10,8 +10,6 @@ body{
     margin:0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont;
     color:#fff;
-
-    /* BACKGROUND IMAGE (URL) */
     background:
       linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
       url("https://files.catbox.moe/g6canw.jpeg") no-repeat center top fixed;
@@ -26,15 +24,15 @@ body{
     background:rgba(0,0,0,.6);
     font-size:15px;
 }
-.bet1x{color:#1e90ff;}      /* 1XBET - Blue */
-.melbet{color:#0d0d0d;}     /* Melbet - Dark Black */
+.bet1x{color:#1e90ff;}
+.melbet{color:#0d0d0d;}
 .starz{
-    color:#fff;             /* 888Starz - Red + White */
+    color:#fff;
     background:#d60000;
     padding:3px 8px;
     border-radius:6px;
 }
-.goldpari{color:#ffd700;}   /* Gold Pari - Yellow */
+.goldpari{color:#ffd700;}
 
 /* LAYOUT */
 .container{
@@ -50,20 +48,22 @@ body{
 }
 
 /* PROFILE */
-.profile{
-    text-align:center;
-}
-.logo{
+.profile{text-align:center;}
+.dp{
     width:120px;
     height:120px;
     border-radius:50%;
+    margin:auto;
     border:3px solid #ffd700;
-    object-fit:cover;
+
+    /* PROFILE DP IMAGE */
+    background:url("https://files.catbox.moe/ualpol.jpg") no-repeat center;
+    background-size:cover;
 }
 .name{
     font-size:22px;
     font-weight:900;
-    margin-top:10px;
+    margin-top:12px;
 }
 .online{
     display:inline-block;
@@ -91,12 +91,8 @@ body{
     font-weight:700;
     background:rgba(255,255,255,.15);
 }
-.btn:hover{
-    background:rgba(255,255,255,.25);
-}
-.full{
-    grid-column:1/3;
-}
+.btn:hover{background:rgba(255,255,255,.25)}
+.full{grid-column:1/3}
 
 /* PROMO */
 .promo{
@@ -135,7 +131,6 @@ body{
     text-align:center;
     font-size:14px;
     margin-top:16px;
-    opacity:.95;
 }
 
 /* FOOTER */
@@ -161,7 +156,7 @@ body{
 <div class="card">
 
     <div class="profile">
-        <img src="https://files.catbox.moe/ualpol.jpg" class="logo">
+        <div class="dp"></div>
         <div class="name">MADUSANKA KWAN</div>
         <div class="online">Online</div>
     </div>
@@ -175,7 +170,7 @@ body{
     </div>
 
     <div class="promo">
-        🚀 Promo Code: <b id="code">WIJE77</b>
+        🚀 Promo Code: <b>WIJE77</b>
         <button class="copy" onclick="copyCode()">Copy</button>
     </div>
 
