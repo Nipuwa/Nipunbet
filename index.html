@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MADUSANKA KWAN | Cash Service</title>
 
+<!-- ICON LIBRARY -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
 body{
     margin:0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont;
     color:#fff;
     background:
-      linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+      linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)),
       url("https://files.catbox.moe/g6canw.jpeg") no-repeat center top fixed;
     background-size: cover;
 }
@@ -22,14 +25,13 @@ body{
     padding:14px;
     font-weight:900;
     background:rgba(0,0,0,.6);
-    font-size:15px;
 }
 .bet1x{color:#1e90ff;}
 .melbet{color:#7b4a12;}
 .starz{color:#ff2b2b;}
 .goldpari{color:#ffd700;}
 
-/* LAYOUT */
+/* CONTAINER */
 .container{
     max-width:420px;
     margin:auto;
@@ -68,26 +70,32 @@ body{
     margin-top:6px;
 }
 
-/* COMMON BUTTON */
+/* BUTTON COMMON */
 .btn{
     padding:14px;
     border-radius:16px;
-    text-align:center;
     text-decoration:none;
     color:#fff;
     font-weight:700;
-    display:block;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
 }
 
-/* GRID BUTTONS */
+/* CONTACT GRID */
 .grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:12px;
     margin-top:20px;
 }
-.grid .btn{background:rgba(255,255,255,.15);}
-.grid .btn:hover{background:rgba(255,255,255,.25);}
+.grid .btn{
+    background:rgba(255,255,255,.15);
+}
+.grid .btn:hover{
+    background:rgba(255,255,255,.25);
+}
 .full{grid-column:1/3}
 
 /* PROMO */
@@ -109,28 +117,16 @@ body{
     cursor:pointer;
 }
 
-/* SITE BUTTON COLORS */
-.site-1xbet{
-    background:#1e90ff;
-}
-.site-melbet{
-    background:#7b4a12;
-}
-.site-888{
-    background:#ff2b2b;
-}
-.site-goldpari{
-    background:#ffd700;
-    color:#000;
-}
-
+/* BET BUTTON COLORS */
 .site-btn{
     margin:10px 0;
     font-size:15px;
 }
-.site-btn:hover{
-    filter:brightness(1.1);
-}
+.site-1xbet{background:#1e90ff;}
+.site-melbet{background:#7b4a12;}
+.site-888{background:#ff2b2b;}
+.site-goldpari{background:#ffd700;color:#000;}
+.site-btn:hover{filter:brightness(1.1);}
 
 /* FEATURES */
 .features{
@@ -167,24 +163,51 @@ body{
         <div class="online">Online</div>
     </div>
 
+    <!-- CONTACT BUTTONS WITH ICONS -->
     <div class="grid">
-        <a class="btn" href="https://wa.me/9476XXXXXXXX">WhatsApp</a>
-        <a class="btn" href="https://t.me/username">Telegram</a>
-        <a class="btn" href="tel:+9476XXXXXXXX">Call</a>
-        <a class="btn" href="mailto:email@gmail.com">Email</a>
-        <a class="btn full" href="#">Facebook</a>
+        <a class="btn" href="https://wa.me/9476XXXXXXXX">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <a class="btn" href="https://t.me/username">
+            <i class="fa-brands fa-telegram"></i> Telegram
+        </a>
+        <a class="btn" href="tel:+9476XXXXXXXX">
+            <i class="fa-solid fa-phone"></i> Call
+        </a>
+        <a class="btn" href="mailto:email@gmail.com">
+            <i class="fa-solid fa-envelope"></i> Email
+        </a>
+        <a class="btn" href="#">
+            <i class="fa-solid fa-comments"></i> Channel
+        </a>
+        <a class="btn" href="#">
+            <i class="fa-brands fa-facebook"></i> Facebook
+        </a>
+        <a class="btn full" href="#">
+            <i class="fa-solid fa-user-plus"></i> Save Contact
+        </a>
     </div>
 
     <div class="promo">
         🚀 Promo Code: <b>WIJE77</b>
-        <button class="copy" onclick="copyCode()">Copy</button>
+        <button class="copy" onclick="copyCode()">
+            <i class="fa-solid fa-copy"></i>
+        </button>
     </div>
 
-    <!-- COLORED SITE BUTTONS -->
-    <a class="btn site-btn site-1xbet" href="#">1xBET</a>
-    <a class="btn site-btn site-melbet" href="#">Melbet</a>
-    <a class="btn site-btn site-888" href="#">888Starz</a>
-    <a class="btn site-btn site-goldpari" href="#">GoldPari</a>
+    <!-- BET SITE BUTTONS WITH ICONS -->
+    <a class="btn site-btn site-1xbet" href="#">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> 1xBET
+    </a>
+    <a class="btn site-btn site-melbet" href="#">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> Melbet
+    </a>
+    <a class="btn site-btn site-888" href="#">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> 888Starz
+    </a>
+    <a class="btn site-btn site-goldpari" href="#">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> GoldPari
+    </a>
 
     <div class="features">
         ✅ 100% විශ්වාසයි<br>
