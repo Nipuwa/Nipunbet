@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Available Banks & Payment Methods</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0a0a0f, #000);
+      color: white;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .rules-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto 30px auto;
+      text-align: left;
+      line-height: 1.6;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .rules-box h2 {
+      text-align: center;
+      color: #ff5555;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .rules-box p {
+      font-size: 14px;
+      margin: 8px 0;
+    }
+
+    .rules-box strong {
+      color: #ffd166;
+    }
+
+    .bank-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .bank-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      transition: 0.3s;
+    }
+
+    .bank-card:hover {
+      transform: translateY(-3px);
+      border-color: #8b5cf6;
+    }
+
+    .bank-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .bank-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .bank-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .bank-details {
+      margin-bottom: 8px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .label {
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .value {
+      font-weight: 600;
+      font-size: 15px;
+      word-break: break-word;
+    }
+
+    .copy-btn {
+      padding: 4px 8px;
+      background: linear-gradient(90deg, #6d28d9, #9333ea);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: 0.2s;
+    }
+
+    .copy-btn:hover {
+      opacity: 0.8;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .home-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #6d28d9, #9333ea);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.2s;
+      margin-top: 20px;
+    }
+
+    .home-btn:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Available Banks & Payment Methods</h1>
+
+  <div class="rules-box">
+    <h2>❗මුදල් තැන්පතු කිරීමේදී මෙම නියමයන් අනිවාර්යව අනුගමනය කරන්න❗</h2>
+    <p>📌 <strong>𝐎𝐍𝐋𝐈𝐍𝐄 𝐀𝐏𝐏</strong> මගින් මුදල් තැන්පතු කරන විට, මුල් (<strong>𝐎𝐑𝐈𝐆𝐈𝐍𝐀𝐋</strong>) <strong>𝐏𝐃𝐅 රිසිට්පත</strong> අප වෙත එවීම අනිවාර්යයි.</p>
+    <p>📌 මුදල් බැර කිරීම සඳහා අප ආයතනයේ බැංකු ගිණුමකට මුදල තැන්පත් කර, <strong>රිසිට් පතක් / තහවුරු කිරීමක්</strong> අප වෙත එවන්න.</p>
+    <p>📌 මුදල් තැන්පත් කිරීමෙන් පසු හැකි ඉක්මනින් අප හා සම්බන්ධ වන්න.</p>
+    <p>📌 <strong>𝐎𝐧𝐥𝐢𝐧𝐞 𝐭𝐫𝐚𝐧𝐬𝐟𝐞𝐫</strong> කිරීමේදී, <strong>𝐑𝐞𝐦𝐚𝐫𝐤</strong> එකේ ඔබේ <strong>𝟏𝐗 𝐈𝐃</strong> (උදා: 𝟏𝐗𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖) යොදාදීම අනිවාර්ය වේ.</p>
+    <p>📌 <strong>𝐂𝐃𝐌</strong> මගින් මුදල් තැන්පත් කරන විට, පෑනකින් "<strong>𝟏𝐗𝐁𝐄𝐓</strong>" වැනි වචන රිසිට් පතේ ලියා එවන්න.</p>
+    <br />
+    <p style="color:#ff5555;">❗මෙය පිළිපදින්න නොහැකි නම්, <strong>𝐃𝐄𝐏𝐎𝐒𝐈𝐓 නොකරන්න</strong>❗</p>
+    <p>⚠ තෙවන පාර්ශ්වයක් (<strong>𝐓𝐡𝐢𝐫𝐝 𝐏𝐚𝐫𝐭𝐲</strong>) හරහා කරන මුදල් තැන්පතු අපට පිළිගත නොහැකි බව කාරුණිකව සලකන්න.</p>
+    <p>කරුණාකර මෙම නියමයන්ට කඩිනමින් පිළිපදින්න.</p>
+  </div>
+
+  <div class="bank-container">
+    <!-- Dialog Finance -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/bezrf4.jpg" alt="Dialog Finance Logo" />
+      </div>
+      <div class="bank-title">Dialog Finance PLC Bank</div>
+      <div class="bank-details">
+        <span class="label">ගිණුම් අංකය:</span>
+        <span class="value" id="acc1">001020414091</span>
+        <button class="copy-btn" onclick="copyText('acc1')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">නම:</span>
+        <span class="value" id="name1">NIROSH S SANJEEWANI</span>
+        <button class="copy-btn" onclick="copyText('name1')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">ශාඛාව:</span>
+        <span class="value" id="branch1">HEAD OFFICE</span>
+        <button class="copy-btn" onclick="copyText('branch1')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Peoples Bank -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/mkfpny.webp" alt="Peoples Bank Logo" />
+      </div>
+      <div class="bank-title">Peoples Bank</div>
+      <div class="bank-details">
+        <span class="label">ගිණුම් අංකය:</span>
+        <span class="value" id="acc2">066200200076455</span>
+        <button class="copy-btn" onclick="copyText('acc2')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">නම:</span>
+        <span class="value" id="name2">K W A N MADUSANKA</span>
+        <button class="copy-btn" onclick="copyText('name2')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">ශාඛාව:</span>
+        <span class="value" id="branch2">TRINCOMALEE</span>
+        <button class="copy-btn" onclick="copyText('branch2')">Copy</button>
+      </div>
+    </div>
+
+    <!-- LOLC Finance -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/0h4eks.jpeg" alt="LOLC Finance Logo" />
+      </div>
+      <div class="bank-title">LOLC Finance PLC</div>
+      <div class="bank-details">
+        <span class="label">ගිණුම් අංකය:</span>
+        <span class="value" id="acc3">03710008600</span>
+        <button class="copy-btn" onclick="copyText('acc3')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">නම:</span>
+        <span class="value" id="name3">K W S S MADUSANKA</span>
+        <button class="copy-btn" onclick="copyText('name3')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">ශාඛාව:</span>
+        <span class="value" id="branch3">HEAD OFFICE</span>
+        <button class="copy-btn" onclick="copyText('branch3')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Sampath Bank -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/p75bzk.png" alt="Sampath Bank Logo" />
+      </div>
+      <div class="bank-title">Sampath Bank PLC</div>
+      <div class="bank-details">
+        <span class="label">ගිණුම් අංකය:</span>
+        <span class="value" id="acc4">106655172662</span>
+        <button class="copy-btn" onclick="copyText('acc4')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">නම:</span>
+        <span class="value" id="name4">K W A N MADUSANKA</span>
+        <button class="copy-btn" onclick="copyText('name4')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">ශාඛාව:</span>
+        <span class="value" id="branch4">TRINCOMALEE</span>
+        <button class="copy-btn" onclick="copyText('branch4')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Commercial Bank -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/u3j9rv.png" alt="Commercial Bank Logo" />
+      </div>
+      <div class="bank-title">Commercial Bank</div>
+      <div class="bank-details">
+        <span class="label">ගිණුම් අංකය:</span>
+        <span class="value" id="acc5">8016816691</span>
+        <button class="copy-btn" onclick="copyText('acc5')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">නම:</span>
+        <span class="value" id="name5">K W S S MADUSANKA</span>
+        <button class="copy-btn" onclick="copyText('name5')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">ශාඛාව:</span>
+        <span class="value" id="branch5">ATTIDIYA</span>
+        <button class="copy-btn" onclick="copyText('branch5')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Bank of Ceylon -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/lv9xca.webp" alt="BOC Logo" />
+      </div>
+      <div class="bank-title">Bank of Ceylon (BOC)</div>
+      <div class="bank-details">
+        <span class="label">ගිණුම් අංකය:</span>
+        <span class="value" id="acc7">95403477</span>
+        <button class="copy-btn" onclick="copyText('acc7')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">නම:</span>
+        <span class="value" id="name7">K W A N MADUSANKA</span>
+        <button class="copy-btn" onclick="copyText('name7')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">ශාඛාව:</span>
+        <span class="value" id="branch7">MORAWEWA</span>
+        <button class="copy-btn" onclick="copyText('branch7')">Copy</button>
+      </div>
+    </div>
+
+    <!-- iPay -->
+    <div class="bank-card">
+      <div class="bank-logo">
+        <img src="https://files.catbox.moe/s2qr8q.webp" alt="iPay Logo" />
+      </div>
+      <div class="bank-title">iPay</div>
+      <div class="bank-details">
+        <span class="label">ගිණුම් අංකය / ID:</span>
+        <span class="value" id="acc6">0771863511</span>
+        <button class="copy-btn" onclick="copyText('acc6')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">නම:</span>
+        <span class="value" id="name6">K W S S MADUSANKA</span>
+        <button class="copy-btn" onclick="copyText('name6')">Copy</button>
+      </div>
+      <div class="bank-details">
+        <span class="label">ශාඛාව / Type:</span>
+        <span class="value" id="branch6">Digital Wallet</span>
+        <button class="copy-btn" onclick="copyText('branch6')">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <a href="index.html" class="home-btn">🏠 Home</a>
+
+  <script>
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("✅ කොපි වුණා: " + text);
+      }).catch(err => {
+        alert("❌ කොපි වෙන්න බැරිවුණා");
+        console.error("Clipboard error:", err);
+      });
+    }
+  </script>
+</body>
+</html>
