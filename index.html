@@ -1,60 +1,167 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MADUSANKA KWAN | Cash Service</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MADUSANKA KWAN | Cash Service</title>
+
+<style>
+body{
+    margin:0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    background: radial-gradient(circle at top,#1b2a6d,#090b2f);
+    color:#fff;
+}
+.top-bar{
+    text-align:center;
+    padding:14px;
+    font-weight:600;
+    background:rgba(0,0,0,.25);
+}
+.top-bar span{color:#ffd700}
+.container{
+    max-width:420px;
+    margin:auto;
+    padding:18px;
+}
+.card{
+    background:rgba(255,255,255,.06);
+    border-radius:22px;
+    padding:20px;
+    backdrop-filter: blur(10px);
+}
+.profile{
+    text-align:center;
+}
+.logo{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    border:3px solid #5f7cff;
+}
+.online{
+    display:inline-block;
+    background:#1aff9c;
+    color:#000;
+    font-size:12px;
+    padding:4px 10px;
+    border-radius:12px;
+    margin-top:6px;
+}
+.name{
+    font-size:22px;
+    font-weight:700;
+    margin:10px 0 2px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:20px;
+}
+.btn{
+    padding:14px;
+    border-radius:16px;
+    text-align:center;
+    text-decoration:none;
+    color:#fff;
+    font-weight:600;
+    background:rgba(255,255,255,.08);
+}
+.btn:hover{background:rgba(255,255,255,.15)}
+.full{grid-column:1/3}
+.promo{
+    margin:18px 0;
+    background:rgba(0,0,0,.3);
+    padding:14px;
+    border-radius:16px;
+    text-align:center;
+}
+.copy{
+    background:#5f7cff;
+    border:none;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:10px;
+    margin-left:6px;
+}
+.site-btn{
+    display:block;
+    margin:10px 0;
+    padding:14px;
+    border-radius:16px;
+    background:rgba(255,255,255,.08);
+    text-decoration:none;
+    color:#fff;
+    text-align:center;
+}
+.features{
+    text-align:center;
+    font-size:14px;
+    opacity:.9;
+    margin-top:16px;
+}
+.footer{
+    text-align:center;
+    font-size:12px;
+    opacity:.6;
+    margin:20px 0;
+}
+</style>
 </head>
+
 <body>
 
+<div class="top-bar">
+    1xBet | Melbet | Linebet | <span>GoldPari</span>
+</div>
+
 <div class="container">
+<div class="card">
 
     <div class="profile">
-        <img src="logo.png" alt="Logo">
-        <h1>MADUSANKA KWAN</h1>
-        <span class="online">● Online</span>
-        <p class="service">Professional Cash Service</p>
+        <img src="logo.png" class="logo">
+        <div class="name">MADUSANKA KWAN</div>
+        <div class="online">Online</div>
     </div>
 
-    <div class="buttons">
-        <a href="https://wa.me/+947787933097" class="btn whatsapp">WhatsApp</a>
-        <a href="https://t.me/Nipunzyx" class="btn telegram">Telegram</a>
-        <a href="tel:+947787933097" class="btn call">Call</a>
-        <a href="mailto:example@gmail.com" class="btn email">Email</a>
-        <a href="#" class="btn facebook">Facebook</a>
+    <div class="grid">
+        <a class="btn" href="https://wa.me/9476XXXXXXXX">WhatsApp</a>
+        <a class="btn" href="https://t.me/username">Telegram</a>
+        <a class="btn" href="tel:+9476XXXXXXXX">Call</a>
+        <a class="btn" href="mailto:email@gmail.com">Email</a>
+        <a class="btn full" href="#">Facebook</a>
     </div>
 
-    <div class="info">
-        <p>
-            1xBet | Melbet | Linebet | Gold Pari සඳහා  
-            <br>තැන්පතු සහ මුදල් ලබාගැනීම.
-        </p>
-
-        <div class="promo">
-            🚀 Promo Code: <b>1XKWAN</b>
-        </div>
+    <div class="promo">
+        🚀 Promo Code: <b id="code">WIJE77</b>
+        <button class="copy" onclick="copyCode()">Copy</button>
     </div>
 
-    <div class="sites">
-        <a href="#" class="site-btn">1xBet</a>
-        <a href="#" class="site-btn">Linebet</a>
-        <a href="#" class="site-btn">Melbet</a>
-        <a href="#" class="site-btn">Gold Pari</a>
-    </div>
+    <a class="site-btn" href="#">1xBet</a>
+    <a class="site-btn" href="#">Linebet</a>
+    <a class="site-btn" href="#">Melbet</a>
+    <a class="site-btn" href="#">Gold Pari</a>
 
     <div class="features">
-        ✅ වේගවත් සේවාව  
-        <br>✅ 100% විශ්වාසයි  
-        <br>💰 2% Cashback  
+        ✅ 100% විශ්වාසයි<br>
+        ⚡ වේගවත් Deposit & Withdrawal<br>
+        💰 2% Cashback
     </div>
 
-    <footer>
-        © 2026 MADUSANKA KWAN Cash Service
-    </footer>
-
 </div>
+
+<div class="footer">
+    © 2026 MADUSANKA KWAN Cash Service
+</div>
+</div>
+
+<script>
+function copyCode(){
+    navigator.clipboard.writeText("WIJE77");
+    alert("Promo Code Copied!");
+}
+</script>
 
 </body>
 </html>
