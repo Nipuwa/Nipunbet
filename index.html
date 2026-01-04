@@ -1,209 +1,134 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MADUSANKA KWAN | Cash Service</title>
+<title>MADUSANKA KWAN | CASH SERVICE</title>
 
 <style>
-body{
+*{
     margin:0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    background:url('https://files.catbox.moe/g6canw.jpeg') no-repeat center center/cover;
+    overflow:hidden;
+}
+
+/* LOADER */
+#loader{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
     color:#fff;
-    background:
-      linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
-      url("https://files.catbox.moe/g6canw.jpeg") no-repeat center top fixed;
-    background-size: cover;
 }
 
-/* TOP BAR */
-.top-bar{
-    text-align:center;
-    padding:14px;
-    font-weight:900;
-    background:rgba(0,0,0,.6);
-    font-size:15px;
+.loader-name{
+    font-size:32px;
+    font-weight:bold;
+    letter-spacing:2px;
+    animation:fadeUp 1.5s ease infinite alternate;
 }
-.bet1x{color:#1e90ff;}
-.melbet{color:#7b4a12;}
-.starz{color:#ff2b2b;}
-.goldpari{color:#ffd700;}
 
-/* LAYOUT */
-.container{
-    max-width:420px;
-    margin:auto;
-    padding:18px;
+.loader-sub{
+    margin-top:10px;
+    font-size:18px;
+    opacity:0.8;
 }
+
+@keyframes fadeUp{
+    from{opacity:0.3; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(-10px);}
+}
+
+/* MAIN CONTENT */
+.main{
+    display:none;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
 .card{
-    background:rgba(255,255,255,.1);
-    border-radius:22px;
-    padding:20px;
-    backdrop-filter: blur(14px);
-}
-
-/* PROFILE */
-.profile{text-align:center;}
-.dp{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    margin:auto;
-    border:3px solid #ffd700;
-    background:url("https://files.catbox.moe/ualpol.jpg") no-repeat center;
-    background-size:cover;
-}
-.name{
-    font-size:22px;
-    font-weight:900;
-    margin-top:12px;
-}
-.online{
-    display:inline-block;
-    background:#00ff9c;
-    color:#000;
-    font-size:12px;
-    padding:4px 14px;
-    border-radius:14px;
-    margin-top:6px;
-}
-
-/* COMMON BUTTON */
-.btn{
-    padding:14px;
-    border-radius:16px;
+    background:rgba(0,0,0,0.6);
+    padding:25px;
+    border-radius:18px;
     text-align:center;
-    text-decoration:none;
     color:#fff;
-    font-weight:700;
-    display:block;
+    width:90%;
+    max-width:350px;
+    backdrop-filter:blur(6px);
 }
 
-/* GRID BUTTONS */
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-    margin-top:20px;
-}
-.grid .btn{background:rgba(255,255,255,.15);}
-.grid .btn:hover{background:rgba(255,255,255,.25);}
-.full{grid-column:1/3}
-
-/* PROMO */
-.promo{
-    margin:18px 0;
-    background:rgba(0,0,0,.5);
-    padding:14px;
-    border-radius:16px;
-    text-align:center;
-}
-.copy{
-    background:#ffd700;
-    border:none;
-    color:#000;
-    padding:6px 14px;
-    border-radius:12px;
-    margin-left:8px;
-    font-weight:800;
-    cursor:pointer;
+.profile img{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    border:3px solid #fff;
+    object-fit:cover;
 }
 
-/* SITE BUTTON COLORS */
-.site-1xbet{
-    background:#1e90ff;
-}
-.site-melbet{
-    background:#7b4a12;
-}
-.site-888{
-    background:#ff2b2b;
-}
-.site-goldpari{
-    background:#ffd700;
-    color:#000;
+h1{
+    margin-top:15px;
+    font-size:22px;
 }
 
-.site-btn{
-    margin:10px 0;
-    font-size:15px;
-}
-.site-btn:hover{
-    filter:brightness(1.1);
-}
-
-/* FEATURES */
-.features{
-    text-align:center;
+h2{
     font-size:14px;
-    margin-top:16px;
+    opacity:0.9;
+    margin-bottom:15px;
 }
 
-/* FOOTER */
-.footer{
-    text-align:center;
-    font-size:12px;
-    opacity:.7;
-    margin:20px 0;
+.promo{
+    margin-top:10px;
+    background:#ffcc00;
+    color:#000;
+    padding:10px;
+    border-radius:10px;
+    font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<div class="top-bar">
-  <span class="bet1x">1xBET</span> |
-  <span class="melbet">Melbet</span> |
-  <span class="starz">888Starz</span> |
-  <span class="goldpari">GoldPari</span>
+<!-- LOADING SCREEN -->
+<div id="loader">
+    <div class="loader-name">MADUSANKA KWAN</div>
+    <div class="loader-sub">CASH SERVICE</div>
 </div>
 
-<div class="container">
-<div class="card">
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent">
+    <div class="card">
+        <div class="profile">
+            <img src="https://files.catbox.moe/ualpol.jpg" alt="Profile">
+        </div>
 
-    <div class="profile">
-        <div class="dp"></div>
-        <div class="name">MADUSANKA KWAN</div>
-        <div class="online">Online</div>
+        <h1>MADUSANKA KWAN</h1>
+        <h2>CASH SERVICE</h2>
+
+        <div class="promo">
+            PROMOCODE : 1XKWAN
+        </div>
     </div>
-
-    <div class="grid">
-        <a class="btn" href="https://wa.me/9476XXXXXXXX">WhatsApp</a>
-        <a class="btn" href="https://t.me/username">Telegram</a>
-        <a class="btn" href="tel:+9476XXXXXXXX">Call</a>
-        <a class="btn" href="mailto:email@gmail.com">Email</a>
-        <a class="btn full" href="#">Facebook</a>
-    </div>
-
-    <div class="promo">
-        🚀 Promo Code: <b>WIJE77</b>
-        <button class="copy" onclick="copyCode()">Copy</button>
-    </div>
-
-    <!-- COLORED SITE BUTTONS -->
-    <a class="btn site-btn site-1xbet" href="#">1xBET</a>
-    <a class="btn site-btn site-melbet" href="#">Melbet</a>
-    <a class="btn site-btn site-888" href="#">888Starz</a>
-    <a class="btn site-btn site-goldpari" href="#">GoldPari</a>
-
-    <div class="features">
-        ✅ 100% විශ්වාසයි<br>
-        ⚡ Fast Deposit & Withdrawal<br>
-        💰 2% Cashback
-    </div>
-
-</div>
-
-<div class="footer">
-    © 2026 MADUSANKA KWAN Cash Service
-</div>
 </div>
 
 <script>
-function copyCode(){
-    navigator.clipboard.writeText("WIJE77");
-    alert("Promo Code Copied!");
-}
+setTimeout(()=>{
+    document.getElementById("loader").style.display="none";
+    document.getElementById("mainContent").style.display="flex";
+},2500);
 </script>
 
 </body>
