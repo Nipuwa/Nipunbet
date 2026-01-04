@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KWAN MADUSANKA - Cash Agent Services</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Gradient Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #001a33, #003366, #005544, #000);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* HEADER */
+    .header {
+      width: 100%;
+      padding: 60px 20px 100px;
+      background: rgba(0, 0, 0, 0.4);
+      border-bottom: 3px solid #00ffcc;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0, 255, 150, 0.4);
+      backdrop-filter: blur(10px);
+    }
+
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #00ffee;
+      background-color: #fff;
+      object-fit: cover;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #00ffcc;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-top: 20px;
+      color: #e6fff9;
+      text-shadow: 0 0 12px #00ffcc;
+    }
+
+    h3 {
+      font-weight: 400;
+      margin-top: 8px;
+      color: #ccffee;
+      text-shadow: 0 0 8px #00b3ff;
+    }
+
+    /* BUTTON LINKS */
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: -60px 0 40px;
+      z-index: 2;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(90deg, #0077ff, #00ff99);
+      padding: 14px 26px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 180, 0.4);
+    }
+
+    .buttons a:hover {
+      background: linear-gradient(90deg, #00ffcc, #0080ff);
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #00ffcc;
+    }
+
+    /* ABOUT SECTION */
+    .about {
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 180, 0.2);
+      border-radius: 20px;
+      padding: 25px;
+      margin: 20px auto;
+      box-shadow: 0 0 20px rgba(0, 255, 150, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .about h2 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+      font-size: 22px;
+      text-shadow: 0 0 8px #00ffcc;
+    }
+
+    .about p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+      color: #ccffdd;
+    }
+
+    .about ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+      text-align: left;
+      display: inline-block;
+    }
+
+    .about ul li {
+      margin: 5px 0;
+      color: #caffee;
+    }
+
+    /* BUTTON LIST SECTION */
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 30px auto 40px;
+      width: 90%;
+      max-width: 360px;
+    }
+
+    .list button {
+      background: linear-gradient(90deg, #00bfff, #00ff99);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 150, 0.3);
+    }
+
+    .list button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 30px #00ffcc;
+      background: linear-gradient(90deg, #00ffcc, #0080ff);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: auto;
+      padding: 20px 10px;
+      font-size: 14px;
+      color: #aee6ff;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border-top: 2px solid #00ff99;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    footer a {
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 26px; }
+      h3 { font-size: 15px; }
+      .buttons a { width: 80%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://files.catbox.moe/n2xkvo.jpg" alt="Profile" class="profile-pic" />
+    <h1>KWAN MADUSANKA</h1>
+    <h3>Professional Cash Agent Services</h3>
+  </div>
+
+  <div class="buttons">
+    <a href="https://wa.me/94726116388" target="_blank">💬 WhatsApp 1</a>
+    <a href="tel:+94726116388">📞 Call</a>
+    <a href="https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt" target="_blank">👥 WhatsApp Group</a>
+    <a href="https://whatsapp.com/channel/0029Vb6hl5tH5JLyIRqdUB0f" target="_blank">📢 Proof</a>
+    <a href="https://www.facebook.com/share/1CSedskYWX/" target="_blank">📘 Facebook</a>
+  </div>
+
+  <div class="about">
+    <h2>About</h2>
+    <p>♻️ හොරුන්ට අසු නොවී ඔබගේ මුදල් නාස්ති නොකරන<br>100% විශ්වාසනීය සේවයක්.</p>
+    <p>🏅 1Xbet 🏅 888 🏅 Melbet 🏅 DB Bet<br>⭐ Cash Agent ⭐</p>
+
+    <ul>
+      <li>✔ Deposit from Rs.100/=</li>
+      <li>✔ Withdrawal from Rs.250/= — No Extra Fees</li>
+      <li>✔ 24/7 Fast Service</li>
+    </ul>
+
+    <p>✅ Free Deposit ✅ Free Signal ✅ Free BET Slip<br>
+       ✅ Sunday / Friday Promo Code Win Bet SLIP</p>
+  </div>
+
+  <div class="list">
+    <button onclick="window.location.href='Bank_Details.html'">🏦 Available Banks</button>
+    <button onclick="window.location.href='https://whatsapp.com/channel/0029Vb6hl5tH5JLyIRqdUB0f'">💸 Withdraw Details</button>
+    <button onclick="window.location.href='https://chat.whatsapp.com/Jcz15TcBaMH68nyWeifuQK?mode=wwt'">📶 Free Signal</button>
+    <button onclick="window.location.href='promo.html'">🎁 Promo Codes & Links</button>
+  </div>
+
+  <footer>
+    © 2025 Official KWAN MADUSANKA. All Rights Reserved.<br>
+    Developed by <a href="#">Nipun</a>
+  </footer>
+</body>
+</html>
