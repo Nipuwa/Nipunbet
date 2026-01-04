@@ -9,27 +9,45 @@
 body{
     margin:0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont;
-    background: radial-gradient(circle at top,#1b2a6d,#090b2f);
     color:#fff;
+    background:
+      linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
+      url("bg.jpg") no-repeat center center fixed;
+    background-size:cover;
 }
+
+/* TOP BAR */
 .top-bar{
     text-align:center;
     padding:14px;
-    font-weight:600;
-    background:rgba(0,0,0,.25);
+    font-weight:700;
+    background:rgba(0,0,0,.55);
+    font-size:15px;
 }
-.top-bar span{color:#ffd700}
+.bet1x{color:#1e90ff;}
+.melbet{color:#111;}
+.starz{
+    color:#fff;
+    background:#d90000;
+    padding:2px 6px;
+    border-radius:6px;
+}
+.goldpari{color:#ffd700;}
+
+/* LAYOUT */
 .container{
     max-width:420px;
     margin:auto;
     padding:18px;
 }
 .card{
-    background:rgba(255,255,255,.06);
+    background:rgba(255,255,255,.08);
     border-radius:22px;
     padding:20px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
 }
+
+/* PROFILE */
 .profile{
     text-align:center;
 }
@@ -37,22 +55,24 @@ body{
     width:110px;
     height:110px;
     border-radius:50%;
-    border:3px solid #5f7cff;
-}
-.online{
-    display:inline-block;
-    background:#1aff9c;
-    color:#000;
-    font-size:12px;
-    padding:4px 10px;
-    border-radius:12px;
-    margin-top:6px;
+    border:3px solid #ffd700;
 }
 .name{
     font-size:22px;
-    font-weight:700;
-    margin:10px 0 2px;
+    font-weight:800;
+    margin-top:10px;
 }
+.online{
+    display:inline-block;
+    background:#00ff9c;
+    color:#000;
+    font-size:12px;
+    padding:4px 12px;
+    border-radius:14px;
+    margin-top:6px;
+}
+
+/* BUTTON GRID */
 .grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -66,45 +86,54 @@ body{
     text-decoration:none;
     color:#fff;
     font-weight:600;
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.12);
 }
-.btn:hover{background:rgba(255,255,255,.15)}
+.btn:hover{background:rgba(255,255,255,.22)}
 .full{grid-column:1/3}
+
+/* PROMO */
 .promo{
     margin:18px 0;
-    background:rgba(0,0,0,.3);
+    background:rgba(0,0,0,.45);
     padding:14px;
     border-radius:16px;
     text-align:center;
 }
 .copy{
-    background:#5f7cff;
+    background:#ffd700;
     border:none;
-    color:#fff;
-    padding:6px 12px;
-    border-radius:10px;
-    margin-left:6px;
+    color:#000;
+    padding:6px 14px;
+    border-radius:12px;
+    margin-left:8px;
+    font-weight:700;
 }
+
+/* SITE BUTTONS */
 .site-btn{
     display:block;
     margin:10px 0;
     padding:14px;
     border-radius:16px;
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.12);
     text-decoration:none;
     color:#fff;
     text-align:center;
+    font-weight:700;
 }
+
+/* FEATURES */
 .features{
     text-align:center;
     font-size:14px;
-    opacity:.9;
     margin-top:16px;
+    opacity:.95;
 }
+
 .footer{
     text-align:center;
     font-size:12px;
-    opacity:.6;
+    opacity:.7;
     margin:20px 0;
 }
 </style>
@@ -113,7 +142,10 @@ body{
 <body>
 
 <div class="top-bar">
-    1xBet | Melbet | Linebet | <span>GoldPari</span>
+  <span class="bet1x">1XBET</span> |
+  <span class="melbet">Melbet</span> |
+  <span class="starz">888Starz</span> |
+  <span class="goldpari">Gold Pari</span>
 </div>
 
 <div class="container">
@@ -138,9 +170,9 @@ body{
         <button class="copy" onclick="copyCode()">Copy</button>
     </div>
 
-    <a class="site-btn" href="#">1xBet</a>
-    <a class="site-btn" href="#">Linebet</a>
+    <a class="site-btn" href="#">1XBET</a>
     <a class="site-btn" href="#">Melbet</a>
+    <a class="site-btn" href="#">888Starz</a>
     <a class="site-btn" href="#">Gold Pari</a>
 
     <div class="features">
